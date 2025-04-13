@@ -46,7 +46,7 @@ const results = {
   ENTJ: {
     title: "O Comandante",
     description: "Você é um líder nato, determinado e focado em transformar ideias em ação.",
-    image: "/cards/mbti.png",
+    image: "/cards/comandante.png",
     strengths: [
       "Liderança e tomada de decisão confiantes",
       "Visão estratégica com foco em resultados",
@@ -66,7 +66,7 @@ const results = {
   ENTP: {
     title: "O Visionário",
     description: "Você é entusiasmado, criativo e motivado por novas possibilidades.",
-    image: "/cards/mbti.png",
+    image: "/cards/visionario.png",
     strengths: [
       "Adaptabilidade e agilidade mental",
       "Criatividade e inovação constante",
@@ -86,7 +86,7 @@ const results = {
   INFJ: {
     title: "O Conselheiro",
     description: "Você é idealista, sensível e movido por causas profundas.",
-    image: "/cards/mbti.png",
+    image: "/cards/conselheiro.png",
     strengths: [
       "Empatia e profunda compreensão humana",
       "Capacidade de escutar e aconselhar",
@@ -106,7 +106,7 @@ const results = {
   INFP: {
     title: "O Idealista",
     description: "Você valoriza autenticidade, profundidade e conexão emocional.",
-    image: "/cards/mbti.png",
+    image: "/cards/idealista.png",
     strengths: [
       "Criatividade emocional e artística",
       "Forte senso de valores",
@@ -126,7 +126,7 @@ const results = {
   ENFJ: {
     title: "O Protagonista",
     description: "Você inspira e motiva os outros com empatia e liderança natural.",
-    image: "/cards/mbti.png",
+    image: "/cards/protagonista.png",
     strengths: [
       "Carisma e liderança empática",
       "Forte habilidade de comunicação",
@@ -146,7 +146,7 @@ const results = {
   ENFP: {
     title: "O Inspirador",
     description: "Você é espontâneo, criativo e movido por conexões humanas.",
-    image: "/cards/mbti.png",
+    image: "/cards/inspirador.png",
     strengths: [
       "Entusiasmo e energia contagiante",
       "Capacidade de enxergar potencial nas pessoas",
@@ -166,7 +166,7 @@ const results = {
   ISTJ: {
     title: "O Inspetor",
     description: "Você é confiável, disciplinado e leal às responsabilidades.",
-    image: "/cards/mbti.png",
+    image: "/cards/inspetor.png",
     strengths: [
       "Responsabilidade e comprometimento",
       "Organização e consistência",
@@ -186,7 +186,7 @@ const results = {
   ISFJ: {
     title: "O Protetor",
     description: "Você é dedicado, gentil e focado no bem-estar alheio.",
-    image: "/cards/mbti.png",
+    image: "/cards/protetor.png",
     strengths: [
       "Altruísmo e atenção ao próximo",
       "Detalhismo e confiabilidade",
@@ -226,7 +226,7 @@ const results = {
   ESFJ: {
     title: "O Provedor",
     description: "Você é caloroso, sociável e comprometido com a harmonia.",
-    image: "/cards/mbti.png",
+    image: "/cards/provedor.png",
     strengths: [
       "Empatia e atenção social",
       "Comprometimento com a comunidade",

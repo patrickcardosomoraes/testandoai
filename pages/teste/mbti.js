@@ -10,7 +10,6 @@ export default function TesteMBTI() {
   const [step, setStep] = useState(0);
   const [scores, setScores] = useState({ E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 });
   const [answers, setAnswers] = useState([]);
-
   const router = useRouter();
   const tabParam = router.query.tab || 'fortes';
   const [activeTab, setActiveTab] = useState(tabParam);
@@ -79,14 +78,13 @@ export default function TesteMBTI() {
     };
 
     return (
-      <main className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-12 text-[#2F6BB0]">
+      <main className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-8 text-[#2F6BB0]">
         <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
-        <p className="text-gray-700 max-w-xl mb-6">{result.description}</p>
-        <Image src={result.image} alt={result.title} width={240} height={240} />
+        <p className="text-gray-700 max-w-xl mb-4 text-sm md:text-base">{result.description}</p>
+        <Image src={result.image} alt={result.title} width={240} height={240} className="mb-4" />
 
-        {/* Abas */}
-        <div className="mt-10 w-full max-w-xl">
-          <div className="flex justify-center gap-4 mb-4">
+        <div className="mt-4 w-full max-w-xl">
+          <div className="flex justify-center gap-2 mb-3 flex-wrap">
             {Object.keys(tabs).map((key) => (
               <button
                 key={key}
@@ -94,10 +92,8 @@ export default function TesteMBTI() {
                   setActiveTab(key);
                   router.push(`/teste/mbti?tab=${key}`, undefined, { shallow: true });
                 }}
-                className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                  activeTab === key
-                    ? 'bg-[#2F6BB0] text-white'
-                    : 'bg-gray-200 text-[#2F6BB0] hover:bg-gray-300'
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                  activeTab === key ? 'bg-[#2F6BB0] text-white' : 'bg-gray-100 text-[#2F6BB0] hover:bg-gray-200'
                 }`}
               >
                 {tabTitles[key]}
@@ -105,8 +101,8 @@ export default function TesteMBTI() {
             ))}
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-gray-700 text-left">
-            <ul className="list-disc pl-5 space-y-2">
+          <div className="bg-white shadow rounded-lg p-4 text-gray-700 text-left text-sm">
+            <ul className="list-disc pl-4 space-y-2">
               {tabs[activeTab]?.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
@@ -114,16 +110,17 @@ export default function TesteMBTI() {
           </div>
         </div>
 
-        {/* Links */}
-        <div className="flex gap-6 mt-8">
-          <Link href="/" className="text-[#2F6BB0] underline hover:text-[#1e4fa3]">
-            Voltar para o início
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <Link href="/">
+            <span className="px-5 py-2 text-sm font-medium border border-[#2F6BB0] text-[#2F6BB0] rounded-full hover:bg-[#2F6BB0] hover:text-white transition">
+              ← para o início
+            </span>
           </Link>
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-600 underline hover:text-green-800"
+            className="px-6 py-2 text-sm font-semibold text-white bg-green-500 hover:bg-green-600 shadow-lg rounded-full flex items-center gap-2 animate-bounce"
           >
             Compartilhar no WhatsApp
           </a>
@@ -133,27 +130,18 @@ export default function TesteMBTI() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-start text-center px-4 py-10 text-[#2F6BB0]">
-      <Image
-        src="/logo_testandoai.png"
-        alt="Logo TestandoAI"
-        width={340}
-        height={340}
-        className="mb-4"
-      />
-      <p className="text-sm text-gray-500 mb-6 italic">
-        Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.
-      </p>
+    <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-start text-center px-4 py-6 text-[#2F6BB0]">
+      <Image src="/logo_testandoai.png" alt="Logo TestandoAI" width={240} height={240} className="mb-2" />
+      <p className="text-xs text-gray-500 mb-4 italic">Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.</p>
 
-      {/* Barra de Progresso */}
-      <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
+      <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
         <div
           className="h-full bg-[#2F6BB0] transition-all duration-300"
           style={{ width: `${(step / questions.length) * 100}%` }}
         ></div>
       </div>
 
-      <p className="text-sm text-gray-500 mb-2">Pergunta {step + 1} de {questions.length}</p>
+      <p className="text-sm text-gray-500 mb-1">Pergunta {step + 1} de {questions.length}</p>
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -164,30 +152,38 @@ export default function TesteMBTI() {
           transition={{ duration: 0.4 }}
           className="w-full max-w-xl"
         >
-          <h2 className="text-2xl font-bold mb-8 text-[#2F6BB0]">{current.question}</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#2F6BB0]">{current.question}</h2>
 
-          <div className="flex gap-2 justify-center flex-wrap">
-            {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
-              const colorMap = {
-                '-3': 'bg-red-400 hover:bg-red-500',
-                '-2': 'bg-red-300 hover:bg-red-400',
-                '-1': 'bg-red-200 hover:bg-red-300',
-                '0': 'bg-gray-300 hover:bg-gray-400 text-gray-800',
-                '1': 'bg-emerald-200 hover:bg-emerald-300',
-                '2': 'bg-emerald-300 hover:bg-emerald-400',
-                '3': 'bg-emerald-400 hover:bg-emerald-500',
-              };
+          <div className="flex flex-col items-center space-y-3">
+            <div className="flex gap-2 justify-center">
+              {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
+                const colorMap = {
+                  '-3': 'bg-red-400 hover:bg-red-500',
+                  '-2': 'bg-red-300 hover:bg-red-400',
+                  '-1': 'bg-red-200 hover:bg-red-300',
+                  '0': 'bg-gray-300 hover:bg-gray-400',
+                  '1': 'bg-emerald-200 hover:bg-emerald-300',
+                  '2': 'bg-emerald-300 hover:bg-emerald-400',
+                  '3': 'bg-emerald-400 hover:bg-emerald-500',
+                };
+                return (
+                  <motion.button
+                    key={val}
+                    onClick={() => handleAnswer(val)}
+                    className={`w-10 h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    aria-label={`Resposta ${val}`}
+                  />
+                );
+              })}
+            </div>
 
-              return (
-                <button
-                  key={val}
-                  onClick={() => handleAnswer(val)}
-                  className={`w-10 h-10 rounded-full font-semibold transition-all duration-200 ${colorMap[val]}`}
-                >
-                  {val === 0 ? '•' : ''}
-                </button>
-              );
-            })}
+            <div className="flex justify-between items-center w-full max-w-xs text-sm text-gray-500 px-2 mb-2">
+              <span>Discordo totalmente</span>
+              <span>Concordo totalmente</span>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -195,7 +191,7 @@ export default function TesteMBTI() {
       {step > 0 && (
         <button
           onClick={handleBack}
-          className="mt-8 text-sm text-[#2F6BB0] underline hover:text-[#1e4fa3] transition-colors"
+          className="mt-6 text-sm text-[#2F6BB0] underline hover:text-[#1e4fa3] transition-colors"
         >
           ← Voltar para a pergunta anterior
         </button>
