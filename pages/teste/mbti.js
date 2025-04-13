@@ -23,12 +23,7 @@ export default function TesteMBTI() {
   const handleAnswer = (value) => {
     const dim = current.dim;
     const trait = value > 0 ? dim[0] : dim[1];
-
-    setScores((prev) => ({
-      ...prev,
-      [trait]: prev[trait] + Math.abs(value),
-    }));
-
+    setScores((prev) => ({ ...prev, [trait]: prev[trait] + Math.abs(value) }));
     setAnswers((prev) => [...prev, value]);
     setStep((prev) => prev + 1);
   };
@@ -38,12 +33,7 @@ export default function TesteMBTI() {
     const prevValue = answers[answers.length - 1];
     const prevDim = questions[step - 1].dim;
     const trait = prevValue > 0 ? prevDim[0] : prevDim[1];
-
-    setScores((prev) => ({
-      ...prev,
-      [trait]: prev[trait] - Math.abs(prevValue),
-    }));
-
+    setScores((prev) => ({ ...prev, [trait]: prev[trait] - Math.abs(prevValue) }));
     setAnswers((prev) => prev.slice(0, -1));
     setStep((prev) => prev - 1);
   };
@@ -55,13 +45,7 @@ export default function TesteMBTI() {
 
   if (step === questions.length) {
     const result = getResult();
-    if (!result) {
-      return (
-        <main className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600">
-          <h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1>
-        </main>
-      );
-    }
+    if (!result) return <main className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600"><h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1></main>;
 
     const url = `https://wa.me/?text=Descobri%20que%20sou%20${result.title}%20no%20teste%20MBTI%20do%20site%20TestandoAI!%20Acesse:%20https://testandoai.com.br/teste/mbti`;
 
@@ -72,7 +56,7 @@ export default function TesteMBTI() {
     };
 
     const tabTitles = {
-      fortes: 'Pontos Fortes',
+      fortes: 'Fortes',
       desafios: 'Desafios',
       recomendacoes: 'Recomendações',
     };
@@ -81,7 +65,7 @@ export default function TesteMBTI() {
       <main className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-8 text-[#2F6BB0]">
         <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
         <p className="text-gray-700 max-w-xl mb-4 text-sm md:text-base">{result.description}</p>
-        <Image src={result.image} alt={result.title} width={240} height={240} className="mb-4" />
+        <Image src={result.image} alt={`Ilustração do tipo ${result.title}`} width={240} height={240} className="mb-4" />
 
         <div className="mt-4 w-full max-w-xl">
           <div className="flex justify-center gap-2 mb-3 flex-wrap">
@@ -111,10 +95,10 @@ export default function TesteMBTI() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <Link href="/">
-            <span className="px-5 py-2 text-sm font-medium border border-[#2F6BB0] text-[#2F6BB0] rounded-full hover:bg-[#2F6BB0] hover:text-white transition">
+          <Link href="/" legacyBehavior>
+            <a className="px-5 py-2 text-sm font-medium border border-[#2F6BB0] text-[#2F6BB0] rounded-full hover:bg-[#2F6BB0] hover:text-white transition">
               ← para o início
-            </span>
+            </a>
           </Link>
           <a
             href={url}
@@ -154,36 +138,31 @@ export default function TesteMBTI() {
         >
           <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#2F6BB0]">{current.question}</h2>
 
-          <div className="flex flex-col items-center space-y-3">
-            <div className="flex gap-2 justify-center">
-              {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
-                const colorMap = {
-                  '-3': 'bg-red-400 hover:bg-red-500',
-                  '-2': 'bg-red-300 hover:bg-red-400',
-                  '-1': 'bg-red-200 hover:bg-red-300',
-                  '0': 'bg-gray-300 hover:bg-gray-400',
-                  '1': 'bg-emerald-200 hover:bg-emerald-300',
-                  '2': 'bg-emerald-300 hover:bg-emerald-400',
-                  '3': 'bg-emerald-400 hover:bg-emerald-500',
-                };
-                return (
-                  <motion.button
-                    key={val}
-                    onClick={() => handleAnswer(val)}
-                    className={`w-10 h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    aria-label={`Resposta ${val}`}
-                  />
-                );
-              })}
-            </div>
+          <div className="text-xs text-gray-500 flex justify-between w-full max-w-xs mx-auto mb-2">
+            <span>Discordo totalmente</span>
+            <span>Concordo totalmente</span>
+          </div>
 
-            <div className="flex justify-between items-center w-full max-w-xs text-sm text-gray-500 px-2 mb-2">
-              <span>Discordo totalmente</span>
-              <span>Concordo totalmente</span>
-            </div>
+          <div className="flex gap-2 justify-center flex-wrap mb-4">
+            {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
+              const colorMap = {
+                '-3': 'bg-red-400 hover:bg-red-500',
+                '-2': 'bg-red-300 hover:bg-red-400',
+                '-1': 'bg-red-200 hover:bg-red-300',
+                '0': 'bg-gray-300 hover:bg-gray-400',
+                '1': 'bg-emerald-200 hover:bg-emerald-300',
+                '2': 'bg-emerald-300 hover:bg-emerald-400',
+                '3': 'bg-emerald-400 hover:bg-emerald-500',
+              };
+              return (
+                <button
+                  key={val}
+                  onClick={() => handleAnswer(val)}
+                  className={`w-8 h-8 md:w-10 md:h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
+                  aria-label={val < 0 ? `Discordo nível ${Math.abs(val)}` : val > 0 ? `Concordo nível ${val}` : 'Neutro'}
+                />
+              );
+            })}
           </div>
         </motion.div>
       </AnimatePresence>

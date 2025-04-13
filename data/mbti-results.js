@@ -246,7 +246,7 @@ const results = {
   ISTP: {
     title: "O Virtuoso",
     description: "Você é prático, objetivo e adora explorar como as coisas funcionam.",
-    image: "/cards/mbti.png",
+    image: "/cards/virtuoso.png",
     strengths: [
       "Independência e adaptabilidade",
       "Solução criativa de problemas",
@@ -266,7 +266,7 @@ const results = {
   ISFP: {
     title: "O Aventureiro",
     description: "Você é sensível, artístico e vive no momento presente.",
-    image: "/cards/mbti.png",
+    image: "/cards/aventureiro.png",
     strengths: [
       "Criatividade estética e emocional",
       "Gentileza e empatia",
@@ -286,7 +286,7 @@ const results = {
   ESTP: {
     title: "O Empreendedor",
     description: "Você é ousado, energético e movido por experiências reais.",
-    image: "/cards/mbti.png",
+    image: "/cards/empreendedor.png",
     strengths: [
       "Iniciativa rápida e mente prática",
       "Coragem para desafios e riscos",
@@ -306,7 +306,7 @@ const results = {
   ESFP: {
     title: "O Animador",
     description: "Você é alegre, expressivo e adora celebrar a vida com intensidade.",
-    image: "/cards/mbti.png",
+    image: "/cards/animador.png",
     strengths: [
       "Carisma e sociabilidade",
       "Alegria contagiante",
