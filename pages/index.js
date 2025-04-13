@@ -3,76 +3,84 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-8 flex flex-col items-center gap-4 bg-[#FAFAFA] text-[#2F6BB0]">
+    <main className="min-h-screen pt-1 pb-8 px-4 flex flex-col items-center gap-2 bg-[#FAFAFA] text-[#2F6BB0]">
       <Image
         src="/logo_testandoai.png"
         alt="Logo TestandoAI"
-        width={240}
-        height={180}
-        className="mb-2"
+        width={230}
+        height={120}
+        className="mb-3"
         priority
       />
 
-      <p className="text-gray-700 text-lg text-center max-w-lg">
-        Descubra quem você é de um jeito divertido e profundo.
+      <h1 className="text-lg md:text-xl font-bold text-center text-[#2F6BB0] leading-snug">
+        Testes de Personalidade com Embasamento Psicológico
+      </h1>
+
+      <p className="text-gray-700 text-center max-w-xl text-sm md:text-base leading-normal">
+        Descubra quem você é de forma divertida, profunda e validada. Nossos testes são baseados em teorias reconhecidas como o MBTI, os quatro temperamentos, as linguagens do amor e mais.
       </p>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 mt-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mt-2">
+        {/* MBTI */}
         <Link href="/teste/mbti" className="hover:scale-105 transition-transform duration-200">
-          <div className="w-[300px] h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-between">
+          <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
             <Image
               src="/cards/mbti.png"
               alt="MBTI"
-              width={300}
-              height={240}
+              width={260}
+              height={180}
               className="object-cover"
             />
-            <div className="p-4 text-center">
-              <h2 className="text-xl font-bold mb-2 text-[#2F6BB0]">MBTI</h2>
-              <p className="text-sm text-gray-600">Descubra sua personalidade</p>
+            <div className="p-3 text-center">
+              <h2 className="text-base font-bold mb-1 text-[#2F6BB0]">MBTI</h2>
+              <p className="text-sm text-gray-600">Descubra sua personalidade com base em 16 perfis</p>
             </div>
           </div>
         </Link>
 
-        <div className="w-[300px] h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-between">
+        {/* Temperamentos */}
+        <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
           <Image
             src="/cards/temperamentos.png"
             alt="Temperamentos"
-            width={300}
-            height={240}
+            width={260}
+            height={180}
             className="object-cover"
           />
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold mb-2 text-gray-800">Temperamentos</h2>
-            <p className="text-sm text-gray-500">Em breve</p>
+          <div className="p-3 text-center">
+            <h2 className="text-base font-bold mb-1 text-gray-800">Temperamentos</h2>
+            <p className="text-sm text-gray-500">Em breve – Teoria dos quatro temperamentos aplicada</p>
           </div>
         </div>
 
-        <div className="w-[300px] h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-between">
+        {/* Linguagens do Amor */}
+        <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
           <Image
             src="/cards/linguagens.png"
             alt="Linguagens do Amor"
-            width={300}
-            height={240}
+            width={260}
+            height={180}
             className="object-cover"
           />
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold mb-2 text-gray-800">Linguagens do Amor</h2>
-            <p className="text-sm text-gray-500">Em breve</p>
+          <div className="p-3 text-center">
+            <h2 className="text-base font-bold mb-1 text-gray-800">Linguagens do Amor</h2>
+            <p className="text-sm text-gray-500">Em breve – Baseado na teoria de Gary Chapman</p>
           </div>
         </div>
 
-        <div className="w-[300px] h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-between">
+        {/* Dark Side */}
+        <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
           <Image
             src="/cards/darkside.png"
             alt="Dark Side"
-            width={300}
-            height={240}
+            width={260}
+            height={180}
             className="object-cover"
           />
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold mb-2 text-gray-800">Dark Side</h2>
-            <p className="text-sm text-gray-500">Em breve</p>
+          <div className="p-3 text-center">
+            <h2 className="text-base font-bold mb-1 text-gray-800">Dark Side</h2>
+            <p className="text-sm text-gray-500">Em breve – Descubra seus traços sombrios com base na Psicologia</p>
           </div>
         </div>
       </div>
