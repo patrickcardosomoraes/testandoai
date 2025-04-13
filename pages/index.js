@@ -3,20 +3,21 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-8 flex flex-col items-center gap-6 bg-[#FAFAFA] text-[#2F6BB0]">
+    <main className="min-h-screen p-8 flex flex-col items-center gap-4 bg-[#FAFAFA] text-[#2F6BB0]">
       <Image
         src="/logo_testandoai.png"
         alt="Logo TestandoAI"
-        width={320}
-        height={320}
+        width={240}
+        height={180}
+        className="mb-2"
         priority
       />
 
-      <p className="text-gray-700 text-lg text-center max-w-lg -mt-0">
+      <p className="text-gray-700 text-lg text-center max-w-lg">
         Descubra quem você é de um jeito divertido e profundo.
       </p>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 mt-2">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 mt-4">
         <Link href="/teste/mbti" className="hover:scale-105 transition-transform duration-200">
           <div className="w-[300px] h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col items-center justify-between">
             <Image
@@ -43,7 +44,7 @@ export default function Home() {
           />
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold mb-2 text-gray-800">Temperamentos</h2>
-            <p className="text-sm text-gray-500">em breve</p>
+            <p className="text-sm text-gray-500">Em breve</p>
           </div>
         </div>
 
@@ -57,7 +58,7 @@ export default function Home() {
           />
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold mb-2 text-gray-800">Linguagens do Amor</h2>
-            <p className="text-sm text-gray-500">em breve</p>
+            <p className="text-sm text-gray-500">Em breve</p>
           </div>
         </div>
 
@@ -71,7 +72,7 @@ export default function Home() {
           />
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold mb-2 text-gray-800">Dark Side</h2>
-            <p className="text-sm text-gray-500">em breve</p>
+            <p className="text-sm text-gray-500">Em breve</p>
           </div>
         </div>
       </div>
