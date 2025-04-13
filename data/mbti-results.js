@@ -1,324 +1,326 @@
+// /data/mbti-results.js
+
 const results = {
   INTJ: {
     title: "O Arquiteto",
-    description: "Você é estratégico, analítico e independente. Consegue ver o quadro geral e planejar com precisão.",
-    image: "/cards/arquiteto.png",
+    description: "Você é estratégico, analítico e movido por grandes visões.",
+    image: "/cards/mbti.png",
     strengths: [
-      "Visão de longo prazo e pensamento estratégico",
-      "Autossuficiência e confiança em suas ideias",
-      "Capacidade de planejar com eficiência",
-      "Alto nível de concentração e foco"
+      "Pensamento estratégico e visão de longo prazo",
+      "Autossuficiência e foco em resultados",
+      "Capacidade de resolver problemas complexos",
+      "Criatividade intelectual e lógica refinada"
     ],
     challenges: [
-      "Pode parecer frio ou distante emocionalmente",
-      "Impaciência com erros alheios",
-      "Tendência ao perfeccionismo"
+      "Dificuldade em lidar com emoções alheias",
+      "Tendência à perfeição e controle",
+      "Pode parecer distante ou crítico demais"
     ],
     recommendations: [
-      "Pratique empatia ativa",
-      "Busque equilibrar estratégia com flexibilidade",
-      "Valorize colaborações com pessoas de perfis diferentes"
+      "Pratique empatia nas interações",
+      "Valorize a contribuição emocional de outras pessoas",
+      "Equilibre perfeccionismo com ação prática"
     ]
   },
   INTP: {
     title: "O Lógico",
-    description: "Você é curioso, criativo e adora entender sistemas complexos e teorias inovadoras.",
+    description: "Você é curioso, inventivo e motivado a entender o mundo de forma profunda.",
     image: "/cards/mbti.png",
     strengths: [
-      "Pensamento lógico e crítico",
-      "Forte habilidade analítica",
-      "Criatividade na resolução de problemas",
-      "Independência intelectual"
+      "Pensamento lógico e analítico",
+      "Criatividade para ideias e sistemas inovadores",
+      "Autonomia intelectual",
+      "Flexibilidade para explorar múltiplas teorias"
     ],
     challenges: [
-      "Dificuldade em aplicar ideias de forma prática",
-      "Tendência a procrastinar",
-      "Pode parecer emocionalmente distante"
+      "Pode se perder em ideias e não finalizar projetos",
+      "Tendência à procrastinação",
+      "Dificuldade em expressar emoções"
     ],
     recommendations: [
-      "Encontre formas práticas de aplicar seu conhecimento",
-      "Estabeleça prazos claros para seus projetos",
-      "Conecte-se emocionalmente com as pessoas ao seu redor"
+      "Defina metas práticas para suas ideias",
+      "Busque parcerias com perfis organizados",
+      "Trabalhe a comunicação emocional"
     ]
   },
   ENTJ: {
     title: "O Comandante",
-    description: "Você lidera com eficiência e adora planejar o futuro.",
+    description: "Você é um líder nato, determinado e focado em transformar ideias em ação.",
     image: "/cards/mbti.png",
     strengths: [
-      "Liderança natural e tomada de decisão firme",
-      "Organização e planejamento eficientes",
-      "Foco em resultados e metas claras"
+      "Liderança e tomada de decisão confiantes",
+      "Visão estratégica com foco em resultados",
+      "Motivação para desafios e crescimento constante"
     ],
     challenges: [
-      "Tendência a ser controlador",
-      "Dificuldade em lidar com emoções alheias",
-      "Pode negligenciar o lado emocional das relações"
+      "Pode parecer autoritário",
+      "Impaciência com erros ou lentidão",
+      "Tendência a negligenciar o lado emocional"
     ],
     recommendations: [
-      "Escute com atenção ativa",
-      "Valorize os sentimentos dos outros em decisões",
-      "Pratique delegar com empatia"
+      "Desenvolva escuta ativa e empatia",
+      "Valorize as emoções no processo de liderança",
+      "Pratique a humildade em decisões coletivas"
     ]
   },
   ENTP: {
     title: "O Visionário",
-    description: "Você é inovador, persuasivo e adora explorar novas ideias e desafios.",
+    description: "Você é entusiasmado, criativo e motivado por novas possibilidades.",
     image: "/cards/mbti.png",
     strengths: [
-      "Capacidade de improvisar e adaptar-se",
-      "Habilidade para enxergar múltiplas possibilidades",
-      "Carisma e comunicação eficaz"
+      "Adaptabilidade e agilidade mental",
+      "Criatividade e inovação constante",
+      "Carisma e persuasão em ideias"
     ],
     challenges: [
-      "Dificuldade em finalizar projetos",
-      "Tendência à impulsividade",
-      "Pode se distrair com ideias demais"
+      "Dificuldade em seguir rotinas",
+      "Tende a abandonar projetos pela metade",
+      "Dispersão em muitos interesses ao mesmo tempo"
     ],
     recommendations: [
-      "Crie sistemas para acompanhar ideias até o fim",
-      "Busque estabilidade sem perder a criatividade",
-      "Desenvolva escuta ativa"
+      "Crie um sistema para concluir projetos",
+      "Trabalhe o foco e a disciplina",
+      "Valorize a escuta ativa nas conversas"
     ]
   },
   INFJ: {
     title: "O Conselheiro",
-    description: "Você é sensível, idealista e motivado por um profundo senso de propósito.",
+    description: "Você é idealista, sensível e movido por causas profundas.",
     image: "/cards/mbti.png",
     strengths: [
-      "Intuição poderosa e empatia",
-      "Comunicação inspiradora",
-      "Capacidade de criar conexões profundas"
+      "Empatia e profunda compreensão humana",
+      "Capacidade de escutar e aconselhar",
+      "Determinação silenciosa para alcançar objetivos significativos"
     ],
     challenges: [
-      "Tende a se sobrecarregar emocionalmente",
-      "Dificuldade em aceitar críticas",
-      "Perfeccionismo idealista"
+      "Tende a absorver os problemas dos outros",
+      "Dificuldade em impor limites",
+      "Pode guardar emoções por muito tempo"
     ],
     recommendations: [
-      "Pratique limites saudáveis",
-      "Aceite imperfeições com compaixão",
-      "Reserve tempo para recarregar sua energia"
+      "Estabeleça autocuidado emocional",
+      "Aprenda a dizer não com amor",
+      "Compartilhe suas próprias vulnerabilidades"
     ]
   },
   INFP: {
     title: "O Idealista",
-    description: "Você valoriza autenticidade, criatividade e vive com um profundo senso de significado.",
+    description: "Você valoriza autenticidade, profundidade e conexão emocional.",
     image: "/cards/mbti.png",
     strengths: [
-      "Imaginação vívida",
-      "Profundo senso de empatia",
-      "Paixão por causas significativas"
+      "Criatividade emocional e artística",
+      "Forte senso de valores",
+      "Capacidade de empatia e escuta ativa"
     ],
     challenges: [
-      "Tendência a evitar conflitos",
-      "Dificuldade em tomar decisões objetivas",
-      "Pode sentir-se incompreendido"
+      "Pode evitar conflitos a todo custo",
+      "Dificuldade em lidar com críticas",
+      "Oscilações de motivação"
     ],
     recommendations: [
-      "Aprenda a equilibrar emoção com razão",
-      "Expresse suas necessidades com clareza",
-      "Busque ambientes que nutram sua sensibilidade"
+      "Abrace a imperfeição sem culpa",
+      "Expresse ideias com coragem",
+      "Busque rotinas que alimentem seu propósito"
     ]
   },
   ENFJ: {
     title: "O Protagonista",
-    description: "Você inspira pessoas com empatia, liderança natural e forte senso de missão.",
+    description: "Você inspira e motiva os outros com empatia e liderança natural.",
     image: "/cards/mbti.png",
     strengths: [
-      "Habilidade para motivar e unir pessoas",
-      "Alta inteligência emocional",
-      "Comprometimento com o bem coletivo"
+      "Carisma e liderança empática",
+      "Forte habilidade de comunicação",
+      "Compromisso com o bem coletivo"
     ],
     challenges: [
-      "Colocar os outros antes de si mesmo",
-      "Tendência a se preocupar demais com a opinião alheia",
-      "Pode se sentir esgotado facilmente"
+      "Pode negligenciar as próprias necessidades",
+      "Excesso de responsabilidade pelos outros",
+      "Dificuldade em lidar com decepções"
     ],
     recommendations: [
-      "Priorize o autocuidado",
-      "Pratique o 'não' com amor",
-      "Delegue responsabilidades para evitar sobrecarga"
+      "Reserve tempo para seu autocuidado",
+      "Delegue com confiança",
+      "Estabeleça limites saudáveis"
     ]
   },
   ENFP: {
     title: "O Inspirador",
-    description: "Você é entusiasmado, criativo e tem facilidade em conectar com as pessoas.",
+    description: "Você é espontâneo, criativo e movido por conexões humanas.",
     image: "/cards/mbti.png",
     strengths: [
-      "Entusiasmo contagiante",
-      "Grande adaptabilidade",
-      "Capacidade de ver o melhor nos outros"
+      "Entusiasmo e energia contagiante",
+      "Capacidade de enxergar potencial nas pessoas",
+      "Criatividade e otimismo em projetos novos"
     ],
     challenges: [
-      "Pode se dispersar em muitos projetos",
-      "Dificuldade em manter rotina",
-      "Sensível a críticas"
+      "Tende a se sobrecarregar com novas ideias",
+      "Dificuldade em finalizar tarefas",
+      "Oscilações de humor e foco"
     ],
     recommendations: [
-      "Crie rituais de foco e disciplina",
-      "Aceite os próprios limites",
-      "Concentre-se em menos, com mais profundidade"
+      "Crie sistemas simples de organização",
+      "Pratique a escuta sem interrupção",
+      "Mantenha consistência sem perder liberdade"
     ]
   },
   ISTJ: {
     title: "O Inspetor",
-    description: "Você é responsável, organizado e comprometido com a lógica.",
+    description: "Você é confiável, disciplinado e leal às responsabilidades.",
     image: "/cards/mbti.png",
     strengths: [
-      "Foco em dever e responsabilidade",
-      "Organização e confiabilidade",
-      "Pensamento lógico e estruturado"
+      "Responsabilidade e comprometimento",
+      "Organização e consistência",
+      "Memória excelente e atenção aos detalhes"
     ],
     challenges: [
-      "Tendência a ser inflexível",
-      "Dificuldade em lidar com mudanças",
-      "Excesso de autocrítica"
+      "Resistência a mudanças inesperadas",
+      "Dificuldade em lidar com ideias abstratas",
+      "Pode parecer rígido ou inflexível"
     ],
     recommendations: [
-      "Pratique flexibilidade nos planos",
-      "Abra espaço para novas ideias",
-      "Reconheça suas conquistas sem culpa"
+      "Seja mais aberto a novas abordagens",
+      "Valorize o inesperado como aprendizado",
+      "Exercite a flexibilidade emocional"
     ]
   },
   ISFJ: {
     title: "O Protetor",
-    description: "Você é leal, gentil e comprometido com o bem-estar das pessoas ao seu redor.",
+    description: "Você é dedicado, gentil e focado no bem-estar alheio.",
     image: "/cards/mbti.png",
     strengths: [
-      "Empatia e dedicação",
-      "Forte senso de dever",
-      "Atenção aos detalhes"
+      "Altruísmo e atenção ao próximo",
+      "Detalhismo e confiabilidade",
+      "Memória afetiva marcante"
     ],
     challenges: [
-      "Tende a se sacrificar demais",
-      "Dificuldade em expressar suas necessidades",
-      "Resistência a mudanças"
+      "Tende a se anular pelos outros",
+      "Pode evitar confrontos importantes",
+      "Resistência a mudanças radicais"
     ],
     recommendations: [
-      "Coloque-se em primeiro lugar quando necessário",
-      "Pratique a assertividade",
-      "Permita-se sair da zona de conforto"
+      "Priorize suas próprias necessidades também",
+      "Aprenda a comunicar desconfortos",
+      "Abrace o novo com confiança"
     ]
   },
   ESTJ: {
     title: "O Executivo",
-    description: "Você é prático, organizado e sabe liderar com eficiência e clareza.",
-    image: "/cards/mbti.png",
+    description: "Você é prático, direto e excelente em organizar pessoas e processos.",
+    image: "/cards/executivo.png",
     strengths: [
-      "Liderança estruturada",
-      "Organização impecável",
-      "Determinação e foco"
+      "Forte senso de dever e estrutura",
+      "Liderança clara e objetiva",
+      "Habilidade para organizar tarefas complexas"
     ],
     challenges: [
-      "Pode parecer autoritário",
-      "Resistência à inovação",
-      "Dificuldade com emoções"
+      "Tendência ao autoritarismo",
+      "Foco excessivo em regras",
+      "Dificuldade em lidar com subjetividade"
     ],
     recommendations: [
-      "Pratique a escuta empática",
-      "Seja flexível diante de novas abordagens",
-      "Valorize a dimensão emocional do trabalho"
+      "Seja mais flexível com novas ideias",
+      "Desenvolva empatia nas lideranças",
+      "Valorize a intuição dos outros"
     ]
   },
   ESFJ: {
     title: "O Provedor",
-    description: "Você é caloroso, confiável e comprometido com o bem-estar coletivo.",
+    description: "Você é caloroso, sociável e comprometido com a harmonia.",
     image: "/cards/mbti.png",
     strengths: [
-      "Sensibilidade às necessidades alheias",
-      "Boa comunicação interpessoal",
-      "Alto nível de responsabilidade"
+      "Empatia e atenção social",
+      "Comprometimento com a comunidade",
+      "Apoio emocional e incentivo constante"
     ],
     challenges: [
-      "Pode depender da aprovação dos outros",
-      "Dificuldade em lidar com críticas",
-      "Tendência ao excesso de zelo"
+      "Tende a buscar aprovação externa",
+      "Pode ignorar suas próprias necessidades",
+      "Medo de rejeição ou confronto"
     ],
     recommendations: [
-      "Desenvolva autovalidação",
-      "Aceite falhas como parte do processo",
-      "Pratique o autocuidado emocional"
+      "Acredite mais na sua autenticidade",
+      "Aprenda a dizer não com amor",
+      "Equilibre dar e receber"
     ]
   },
   ISTP: {
     title: "O Virtuoso",
-    description: "Você é prático, analítico e gosta de resolver problemas com criatividade.",
+    description: "Você é prático, objetivo e adora explorar como as coisas funcionam.",
     image: "/cards/mbti.png",
     strengths: [
-      "Solução rápida de problemas",
-      "Tranquilidade sob pressão",
+      "Independência e adaptabilidade",
+      "Solução criativa de problemas",
       "Habilidade manual e técnica"
     ],
     challenges: [
-      "Tendência a evitar compromissos emocionais",
-      "Dificuldade em expressar sentimentos",
-      "Impaciência com regras"
+      "Tende a evitar compromissos longos",
+      "Pouca paciência com teorias",
+      "Dificuldade em expressar sentimentos"
     ],
     recommendations: [
-      "Explore sua criatividade em ambientes colaborativos",
-      "Permita-se vulnerabilidades",
-      "Cultive o autocuidado emocional"
+      "Pratique constância em relacionamentos",
+      "Abrace projetos de longo prazo",
+      "Valorize o impacto emocional nas decisões"
     ]
   },
   ISFP: {
     title: "O Aventureiro",
-    description: "Você é sensível, artístico e busca viver com liberdade e harmonia.",
+    description: "Você é sensível, artístico e vive no momento presente.",
     image: "/cards/mbti.png",
     strengths: [
-      "Espírito livre e espontâneo",
-      "Criatividade artística",
-      "Forte empatia com o ambiente"
+      "Criatividade estética e emocional",
+      "Gentileza e empatia",
+      "Capacidade de viver o agora com autenticidade"
     ],
     challenges: [
-      "Dificuldade em planejar a longo prazo",
-      "Tendência à introspecção excessiva",
-      "Fuga de conflitos"
+      "Fuga de situações desconfortáveis",
+      "Dificuldade em tomar decisões firmes",
+      "Tende a se esconder em vez de se expressar"
     ],
     recommendations: [
-      "Crie pequenos planos de ação",
-      "Compartilhe sua sensibilidade com o mundo",
-      "Aprenda a encarar conflitos com gentileza"
+      "Traga sua arte para o mundo",
+      "Enfrente os conflitos com suavidade",
+      "Cultive coragem para se posicionar"
     ]
   },
   ESTP: {
     title: "O Empreendedor",
-    description: "Você é ousado, prático e gosta de viver experiências intensas.",
+    description: "Você é ousado, energético e movido por experiências reais.",
     image: "/cards/mbti.png",
     strengths: [
-      "Agilidade na tomada de decisões",
-      "Habilidade para lidar com crises",
-      "Energia e entusiasmo"
+      "Iniciativa rápida e mente prática",
+      "Coragem para desafios e riscos",
+      "Facilidade em influenciar os outros"
     ],
     challenges: [
-      "Tendência a agir sem pensar",
-      "Dificuldade em concluir projetos",
-      "Busca constante por adrenalina"
+      "Busca constante por adrenalina",
+      "Desinteresse por rotinas",
+      "Pode negligenciar reflexões profundas"
     ],
     recommendations: [
-      "Pratique foco e persistência",
-      "Aprenda com pausas e reflexões",
-      "Equilibre ação com propósito"
+      "Equilibre ação com planejamento",
+      "Desenvolva escuta ativa",
+      "Pratique presença emocional"
     ]
   },
   ESFP: {
     title: "O Animador",
-    description: "Você é extrovertido, alegre e espalha luz por onde passa.",
+    description: "Você é alegre, expressivo e adora celebrar a vida com intensidade.",
     image: "/cards/mbti.png",
     strengths: [
+      "Carisma e sociabilidade",
       "Alegria contagiante",
-      "Facilidade em socializar",
-      "Presença marcante"
+      "Espontaneidade e amor pela vida"
     ],
     challenges: [
-      "Foco no presente em detrimento do futuro",
-      "Busca excessiva por validação",
-      "Dificuldade com rotinas"
+      "Pode evitar responsabilidades",
+      "Busca constante por aprovação",
+      "Dificuldade em lidar com o silêncio"
     ],
     recommendations: [
-      "Crie estruturas que apoiem sua liberdade",
-      "Cultive momentos de introspecção",
-      "Encontre propósito além da diversão"
+      "Traga leveza com profundidade",
+      "Aprenda a aproveitar o silêncio",
+      "Cuide do seu bem-estar emocional com carinho"
     ]
   }
 };
