@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,6 +10,14 @@ export default function TesteMBTI() {
   const [step, setStep] = useState(0);
   const [scores, setScores] = useState({ E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 });
   const [answers, setAnswers] = useState([]);
+
+  const router = useRouter();
+  const tabParam = router.query.tab || 'fortes';
+  const [activeTab, setActiveTab] = useState(tabParam);
+
+  useEffect(() => {
+    setActiveTab(tabParam);
+  }, [tabParam]);
 
   const current = questions[step];
 
@@ -47,18 +56,68 @@ export default function TesteMBTI() {
 
   if (step === questions.length) {
     const result = getResult();
+    if (!result) {
+      return (
+        <main className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600">
+          <h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1>
+        </main>
+      );
+    }
+
     const url = `https://wa.me/?text=Descobri%20que%20sou%20${result.title}%20no%20teste%20MBTI%20do%20site%20TestandoAI!%20Acesse:%20https://testandoai.com.br/teste/mbti`;
+
+    const tabs = {
+      fortes: result.strengths,
+      desafios: result.challenges,
+      recomendacoes: result.recommendations,
+    };
+
+    const tabTitles = {
+      fortes: 'Pontos Fortes',
+      desafios: 'Desafios',
+      recomendacoes: 'Recomendações',
+    };
 
     return (
       <main className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-12 text-[#2F6BB0]">
-        <h1 className="text-3xl font-bold mb-4">Você é {result.title}</h1>
-        <p className="text-gray-700 max-w-lg mb-6">{result.description}</p>
+        <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
+        <p className="text-gray-700 max-w-xl mb-6">{result.description}</p>
         <Image src={result.image} alt={result.title} width={240} height={240} />
-        <div className="flex gap-4 mt-6">
-          <Link href="/">
-            <span className="text-[#2F6BB0] underline hover:text-[#1e4fa3] transition-colors">
-              Voltar para o início
-            </span>
+
+        {/* Abas */}
+        <div className="mt-10 w-full max-w-xl">
+          <div className="flex justify-center gap-4 mb-4">
+            {Object.keys(tabs).map((key) => (
+              <button
+                key={key}
+                onClick={() => {
+                  setActiveTab(key);
+                  router.push(`/teste/mbti?tab=${key}`, undefined, { shallow: true });
+                }}
+                className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                  activeTab === key
+                    ? 'bg-[#2F6BB0] text-white'
+                    : 'bg-gray-200 text-[#2F6BB0] hover:bg-gray-300'
+                }`}
+              >
+                {tabTitles[key]}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-white shadow-lg rounded-lg p-6 text-gray-700 text-left">
+            <ul className="list-disc pl-5 space-y-2">
+              {tabs[activeTab]?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-6 mt-8">
+          <Link href="/" className="text-[#2F6BB0] underline hover:text-[#1e4fa3]">
+            Voltar para o início
           </Link>
           <a
             href={url}
@@ -75,7 +134,6 @@ export default function TesteMBTI() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-start text-center px-4 py-10 text-[#2F6BB0]">
-      {/* Logo e mensagem */}
       <Image
         src="/logo_testandoai.png"
         alt="Logo TestandoAI"
