@@ -1,4 +1,3 @@
-// /pages/teste/mbti.js
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -75,7 +74,19 @@ export default function TesteMBTI() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-center text-center px-4 py-10 text-[#2F6BB0] relative">
+    <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-start text-center px-4 py-10 text-[#2F6BB0]">
+      {/* Logo e mensagem */}
+      <Image
+        src="/logo_testandoai.png"
+        alt="Logo TestandoAI"
+        width={340}
+        height={340}
+        className="mb-4"
+      />
+      <p className="text-sm text-gray-500 mb-6 italic">
+        Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.
+      </p>
+
       {/* Barra de Progresso */}
       <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
         <div
@@ -97,20 +108,28 @@ export default function TesteMBTI() {
         >
           <h2 className="text-2xl font-bold mb-8 text-[#2F6BB0]">{current.question}</h2>
 
-          <div className="flex items-center justify-center gap-2 flex-wrap">
-            {[-3, -2, -1, 0, 1, 2, 3].map((val) => (
-              <button
-                key={val}
-                onClick={() => handleAnswer(val)}
-                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-sm sm:text-base font-bold shadow-sm
-                  transition-all duration-200 border-2
-                  ${val === 0
-                    ? 'bg-gray-300 text-gray-800 border-gray-300'
-                    : 'bg-white border-[#2F6BB0] text-[#2F6BB0] hover:bg-[#2F6BB0] hover:text-white'}`}
-              >
-                {val > 0 ? `+${val}` : val}
-              </button>
-            ))}
+          <div className="flex gap-2 justify-center flex-wrap">
+            {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
+              const colorMap = {
+                '-3': 'bg-red-400 hover:bg-red-500',
+                '-2': 'bg-red-300 hover:bg-red-400',
+                '-1': 'bg-red-200 hover:bg-red-300',
+                '0': 'bg-gray-300 hover:bg-gray-400 text-gray-800',
+                '1': 'bg-emerald-200 hover:bg-emerald-300',
+                '2': 'bg-emerald-300 hover:bg-emerald-400',
+                '3': 'bg-emerald-400 hover:bg-emerald-500',
+              };
+
+              return (
+                <button
+                  key={val}
+                  onClick={() => handleAnswer(val)}
+                  className={`w-10 h-10 rounded-full font-semibold transition-all duration-200 ${colorMap[val]}`}
+                >
+                  {val === 0 ? '•' : ''}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       </AnimatePresence>
