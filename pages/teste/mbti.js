@@ -1,8 +1,10 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import Layout from '@/components/Layout';
 import questions from '@/data/mbti-questions';
 import results from '@/data/mbti-results';
 
@@ -45,7 +47,15 @@ export default function TesteMBTI() {
 
   if (step === questions.length) {
     const result = getResult();
-    if (!result) return <main className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600"><h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1></main>;
+    if (!result) {
+      return (
+        <Layout>
+          <div className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600">
+            <h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1>
+          </div>
+        </Layout>
+      );
+    }
 
     const url = `https://wa.me/?text=Descobri%20que%20sou%20${result.title}%20no%20teste%20MBTI%20do%20site%20TestandoAI!%20Acesse:%20https://testandoai.com.br/teste/mbti`;
 
@@ -62,119 +72,123 @@ export default function TesteMBTI() {
     };
 
     return (
-      <main className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-8 text-[#2F6BB0]">
-        <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
-        <p className="text-gray-700 max-w-xl mb-4 text-sm md:text-base">{result.description}</p>
-        <Image src={result.image} alt={`Ilustração do tipo ${result.title}`} width={240} height={240} className="mb-4" />
+      <Layout>
+        <div className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-8 text-[#2F6BB0]">
+          <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
+          <p className="text-gray-700 max-w-xl mb-4 text-sm md:text-base">{result.description}</p>
+          <Image src={result.image} alt={`Ilustração do tipo ${result.title}`} width={240} height={240} className="mb-4" />
 
-        <div className="mt-4 w-full max-w-xl">
-          <div className="flex justify-center gap-2 mb-3 flex-wrap">
-            {Object.keys(tabs).map((key) => (
-              <button
-                key={key}
-                onClick={() => {
-                  setActiveTab(key);
-                  router.push(`/teste/mbti?tab=${key}`, undefined, { shallow: true });
-                }}
-                className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                  activeTab === key ? 'bg-[#2F6BB0] text-white' : 'bg-gray-100 text-[#2F6BB0] hover:bg-gray-200'
-                }`}
-              >
-                {tabTitles[key]}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-white shadow rounded-lg p-4 text-gray-700 text-left text-sm">
-            <ul className="list-disc pl-4 space-y-2">
-              {tabs[activeTab]?.map((item, index) => (
-                <li key={index}>{item}</li>
+          <div className="mt-4 w-full max-w-xl">
+            <div className="flex justify-center gap-2 mb-3 flex-wrap">
+              {Object.keys(tabs).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => {
+                    setActiveTab(key);
+                    router.push(`/teste/mbti?tab=${key}`, undefined, { shallow: true });
+                  }}
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                    activeTab === key ? 'bg-[#2F6BB0] text-white' : 'bg-gray-100 text-[#2F6BB0] hover:bg-gray-200'
+                  }`}
+                >
+                  {tabTitles[key]}
+                </button>
               ))}
-            </ul>
+            </div>
+
+            <div className="bg-white shadow rounded-lg p-4 text-gray-700 text-left text-sm">
+              <ul className="list-disc pl-4 space-y-2">
+                {tabs[activeTab]?.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <Link href="/" legacyBehavior>
+              <a className="px-5 py-2 text-sm font-medium border border-[#2F6BB0] text-[#2F6BB0] rounded-full hover:bg-[#2F6BB0] hover:text-white transition">
+                ← para o início
+              </a>
+            </Link>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 text-sm font-semibold text-white bg-green-500 hover:bg-green-600 shadow-lg rounded-full flex items-center gap-2 animate-bounce"
+            >
+              Compartilhar no WhatsApp
+            </a>
           </div>
         </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <Link href="/" legacyBehavior>
-            <a className="px-5 py-2 text-sm font-medium border border-[#2F6BB0] text-[#2F6BB0] rounded-full hover:bg-[#2F6BB0] hover:text-white transition">
-              ← para o início
-            </a>
-          </Link>
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2 text-sm font-semibold text-white bg-green-500 hover:bg-green-600 shadow-lg rounded-full flex items-center gap-2 animate-bounce"
-          >
-            Compartilhar no WhatsApp
-          </a>
-        </div>
-      </main>
+      </Layout>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-start text-center px-4 py-6 text-[#2F6BB0]">
-      <Image src="/logo_testandoai.png" alt="Logo TestandoAI" width={240} height={240} className="mb-2" />
-      <p className="text-xs text-gray-500 mb-4 italic">Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.</p>
+    <Layout>
+      <div className="flex flex-col items-center justify-start text-center px-4 py-6 text-[#2F6BB0]">
+        <Image src="/logo_testandoai.png" alt="Logo TestandoAI" width={240} height={240} className="mb-2" />
+        <p className="text-xs text-gray-500 mb-4 italic">Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.</p>
 
-      <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
-        <div
-          className="h-full bg-[#2F6BB0] transition-all duration-300"
-          style={{ width: `${(step / questions.length) * 100}%` }}
-        ></div>
+        <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+          <div
+            className="h-full bg-[#2F6BB0] transition-all duration-300"
+            style={{ width: `${(step / questions.length) * 100}%` }}
+          ></div>
+        </div>
+
+        <p className="text-sm text-gray-500 mb-1">Pergunta {step + 1} de {questions.length}</p>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={step}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.4 }}
+            className="w-full max-w-xl"
+          >
+            <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#2F6BB0]">{current.question}</h2>
+
+            <div className="text-xs text-gray-500 flex justify-between w-full max-w-xs mx-auto mb-2">
+              <span>Discordo totalmente</span>
+              <span>Concordo totalmente</span>
+            </div>
+
+            <div className="flex gap-2 justify-center flex-wrap mb-4">
+              {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
+                const colorMap = {
+                  '-3': 'bg-red-400 hover:bg-red-500',
+                  '-2': 'bg-red-300 hover:bg-red-400',
+                  '-1': 'bg-red-200 hover:bg-red-300',
+                  '0': 'bg-gray-300 hover:bg-gray-400',
+                  '1': 'bg-emerald-200 hover:bg-emerald-300',
+                  '2': 'bg-emerald-300 hover:bg-emerald-400',
+                  '3': 'bg-emerald-400 hover:bg-emerald-500',
+                };
+                return (
+                  <button
+                    key={val}
+                    onClick={() => handleAnswer(val)}
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
+                    aria-label={val < 0 ? `Discordo nível ${Math.abs(val)}` : val > 0 ? `Concordo nível ${val}` : 'Neutro'}
+                  />
+                );
+              })}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {step > 0 && (
+          <button
+            onClick={handleBack}
+            className="mt-6 text-sm text-[#2F6BB0] underline hover:text-[#1e4fa3] transition-colors"
+          >
+            ← Voltar para a pergunta anterior
+          </button>
+        )}
       </div>
-
-      <p className="text-sm text-gray-500 mb-1">Pergunta {step + 1} de {questions.length}</p>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={step}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.4 }}
-          className="w-full max-w-xl"
-        >
-          <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#2F6BB0]">{current.question}</h2>
-
-          <div className="text-xs text-gray-500 flex justify-between w-full max-w-xs mx-auto mb-2">
-            <span>Discordo totalmente</span>
-            <span>Concordo totalmente</span>
-          </div>
-
-          <div className="flex gap-2 justify-center flex-wrap mb-4">
-            {[-3, -2, -1, 0, 1, 2, 3].map((val) => {
-              const colorMap = {
-                '-3': 'bg-red-400 hover:bg-red-500',
-                '-2': 'bg-red-300 hover:bg-red-400',
-                '-1': 'bg-red-200 hover:bg-red-300',
-                '0': 'bg-gray-300 hover:bg-gray-400',
-                '1': 'bg-emerald-200 hover:bg-emerald-300',
-                '2': 'bg-emerald-300 hover:bg-emerald-400',
-                '3': 'bg-emerald-400 hover:bg-emerald-500',
-              };
-              return (
-                <button
-                  key={val}
-                  onClick={() => handleAnswer(val)}
-                  className={`w-8 h-8 md:w-10 md:h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
-                  aria-label={val < 0 ? `Discordo nível ${Math.abs(val)}` : val > 0 ? `Concordo nível ${val}` : 'Neutro'}
-                />
-              );
-            })}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {step > 0 && (
-        <button
-          onClick={handleBack}
-          className="mt-6 text-sm text-[#2F6BB0] underline hover:text-[#1e4fa3] transition-colors"
-        >
-          ← Voltar para a pergunta anterior
-        </button>
-      )}
-    </main>
+    </Layout>
   );
 }

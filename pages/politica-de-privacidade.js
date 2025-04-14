@@ -1,30 +1,16 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
+import Layout from '@/components/Layout';
 
 export default function PoliticaPrivacidade() {
   return (
-    <main className="min-h-screen bg-white text-[#2F6BB0] flex flex-col justify-between">
-      {/* Cabeçalho com logo */}
-      <header className="w-full flex justify-center py-6 border-b border-gray-200">
-        <Link href="/">
-          <Image
-            src="/logo_testandoai.png"
-            alt="Logo TestandoAI"
-            width={180}
-            height={80}
-            priority
-          />
-        </Link>
-      </header>
-
-      {/* Conteúdo principal */}
-      <section className="flex-grow px-6 py-10">
+    <Layout>
+      <section className="px-6 py-10 bg-white text-[#2F6BB0]">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Política de Privacidade</h1>
 
           <p className="mb-4">
-            Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações quando você utiliza o site TestandoAI (https://testandoai.com.br).
+            Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações quando você utiliza o site TestandoAI (<strong>https://testandoai.com.br</strong>).
           </p>
 
           <h2 className="text-xl font-semibold mt-6 mb-2">1. Informações que coletamos</h2>
@@ -71,16 +57,6 @@ export default function PoliticaPrivacidade() {
           </div>
         </div>
       </section>
-
-      {/* Rodapé */}
-      <footer className="w-full border-t border-gray-200 py-4 text-center text-sm text-gray-500">
-        <p>
-          © {new Date().getFullYear()} TestandoAI ·{' '}
-          <Link href="/privacidade" className="underline text-[#2F6BB0] hover:text-blue-800">
-            Política de Privacidade
-          </Link>
-        </p>
-      </footer>
-    </main>
+    </Layout>
   );
 }
