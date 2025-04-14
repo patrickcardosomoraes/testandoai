@@ -50,3 +50,51 @@ button:hover {
 .circle-button {
   @apply w-10 h-10 rounded-full font-semibold flex items-center justify-center;
 }
+
+/* 📚 Ajustes para conteúdo do blog */
+.prose {
+  line-height: 1.8;
+  max-width: 100%;
+  color: #2F6BB0;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  color: #4B5563; /* texto mais escuro para melhor leitura */
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: #2F6BB0;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.prose img {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border-radius: 0.75rem;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  font-style: italic;
+  border-left: 4px solid #2F6BB0;
+  padding-left: 1rem;
+  color: #4B5563;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
