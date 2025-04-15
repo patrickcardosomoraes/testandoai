@@ -4,7 +4,7 @@ import sys
 
 # Garante que podemos importar o gerar_post.py da mesma pasta
 sys.path.append(os.path.join(os.path.dirname(__file__)))
-from gerar_post import gerar_post
+from scripts.gerar_post import gerar_post
 
 # === Temas com horário sugerido ===
 posts = [
@@ -37,7 +37,6 @@ def inserir_errinhos(texto):
 
 # === Gerar os 3 posts com base nas ideias acima ===
 for post in posts:
-    titulo = post["titulo"]
-    descricao = inserir_errinhos(post["descricao"])
+    post["descricao"] = inserir_errinhos(post["descricao"])
     prompt = ""  # o gerar_post já usa prompt dinâmico
-    gerar_post(titulo, descricao, prompt)
+    gerar_post(post["titulo"], post["descricao"], prompt)
