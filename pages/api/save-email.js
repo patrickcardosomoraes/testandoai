@@ -17,9 +17,9 @@ export default async function handler(req, res) {
       .from('cadastro_testandoai')
       .select('id')
       .eq('email', email)
-      .maybeSingle();
+      .single();
 
-    if (fetchError) {
+    if (fetchError && fetchError.code !== 'PGRST116') {
       console.error('Erro ao verificar e-mail:', fetchError.message);
       return res.status(500).json({ error: 'Erro ao verificar e-mail' });
     }
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
     const { error: insertError } = await supabase
       .from('cadastro_testandoai')
-      .insert([{ email, origem }]); // 👈 aqui tá o pulo do gato
+      .insert([{ email, origem }]);
 
     if (insertError) {
       console.error('Erro ao salvar e-mail:', insertError.message);
