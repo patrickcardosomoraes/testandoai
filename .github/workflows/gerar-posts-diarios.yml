@@ -31,15 +31,19 @@ jobs:
       - name: 🤖 Rodar o script de geração
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/gerar_post.py
+        run: python scripts/postar_em_lote.py
 
-      - name: 📤 Commit e Push dos novos posts
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add content/posts/ public/results/ logs/ || echo "Nada para adicionar"
-          git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
-          git push
+        - name: 📤 Commit e Push dos novos posts
+  env:
+    GH_TOKEN: ${{ secrets.GH_PAT }}
+  run: |
+    git config --global user.name "github-actions"
+    git config --global user.email "actions@github.com"
+    git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/patrickcardosomoraes/testandoai.git
+    git add content/posts/ public/results/ logs/ || echo "Nada para adicionar"
+    git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
+    git push origin main
+   
 
       - name: 🚀 Disparar deploy na Vercel
         run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
