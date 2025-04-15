@@ -5,7 +5,7 @@ on:
     - cron: '0 12 * * *'   # 9h (horário de Brasília)
     - cron: '0 18 * * *'   # 15h BRT
     - cron: '0 0 * * *'    # 21h BRT
-  workflow_dispatch:       # permite rodar manualmente pelo GitHub
+  workflow_dispatch:
 
 jobs:
   gerar-post:
@@ -29,14 +29,17 @@ jobs:
         run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
       - name: 🤖 Rodar o script de geração
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/gerar_post.py
 
       - name: 📤 Commit e Push dos novos posts
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add content/posts/ public/results/
-          git diff --quiet && echo "Nenhuma mudança" || (git commit -m "✨ Novo post automático com imagem gerada por IA" && git push)
+          git add content/posts/ public/results/ logs/ || echo "Nada para adicionar"
+          git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
+          git push
 
       - name: 🚀 Disparar deploy na Vercel
         run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
