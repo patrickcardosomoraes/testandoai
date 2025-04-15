@@ -1,4 +1,4 @@
-.env
+.envgit add .gitinore
 node_modules/
 .next/
 .DS_Store
