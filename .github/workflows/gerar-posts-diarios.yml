@@ -28,10 +28,11 @@ jobs:
       - name: 📄 Criar variáveis de ambiente
         run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
-      - name: 🤖 Rodar o script de geração
+        - name: 🤖 Rodar o script de geração
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/postar_em_lote.py
+        working-directory: scripts
+        run: python postar_em_lote.py
 
       - name: 📤 Commit e Push dos novos posts
         env:
