@@ -108,48 +108,86 @@ tags: ["mentalidade", "psicologia", "autoconhecimento"]
     os.makedirs(caminho_diretorio, exist_ok=True)
 
     caminho_post = f"{caminho_diretorio}/{slug}-{data}.md"
+    if os.path.exists(caminho_post):
+        print(f"⚠️ Post já existe: {caminho_post} — pulando geração.")
+        return
+
     with open(caminho_post, "w") as f:
         f.write(front_matter + conteudo)
 
     print(f"✅ Post gerado: {caminho_post}")
     print(f"🖼️ Imagem salva em: public{caminho_imagem}")
 
-# === EXECUÇÃO AUTOMÁTICA COM TEMAS ALEATÓRIOS ===
+# === EXECUÇÃO AUTOMÁTICA COM 3 TEMAS ===
 if __name__ == "__main__":
-    temas_possiveis = [
-        ("A ciência do bom humor: como pequenas ações mudam seu dia", "Estudos mostram como coisas simples como sorrir ou ouvir música influenciam diretamente sua química cerebral."),
+    from datetime import datetime
+    USADOS_PATH = "logs/temas_usados.txt"
+    os.makedirs("logs", exist_ok=True)
+    if not os.path.exists(USADOS_PATH):
+        with open(USADOS_PATH, "w") as f:
+            f.write("")
+
+    temas_alta = [
         ("5 segredos psicológicos para aumentar sua autoestima agora", "Descubra gatilhos mentais validados pela ciência para desbloquear sua autoconfiança."),
-        ("Como o silêncio afeta seu cérebro (e pode te curar)", "Neurocientistas revelam como momentos de silêncio reestruturam seu foco, emoções e criatividade."),
-        ("Seu cérebro em overdose: o que a era da informação está fazendo com você", "Entenda por que nos sentimos tão cansados e como filtrar o excesso pode salvar sua sanidade."),
         ("Por que procrastinamos (e o que fazer a respeito, segundo a ciência)", "A neurociência explica como vencer a inércia com estratégias práticas."),
         ("Multitarefa está destruindo seu foco? Veja o que dizem os estudos", "A verdade sobre fazer mil coisas ao mesmo tempo e como recuperar sua produtividade."),
-        ("Como abraçar o tédio pode turbinar sua criatividade", "Estudos mostram que momentos de pausa ajudam a mente a se reorganizar e inovar."),
-        ("Você pensa demais? Como o excesso de análise pode te paralisar", "Overthinking é mais comum do que parece e tem solução."),
-        ("Mindset de crescimento: como pensar como quem vence", "Entenda como quem tem sucesso encara erros, desafios e mudanças."),
-        ("Pequenas vitórias: o truque psicológico que cria gigantes", "A ciência mostra como celebrar pequenas conquistas muda sua autoimagem."),
-        ("Você é aquilo que assiste: o impacto da mídia no seu humor", "O que você consome está moldando sua visão do mundo — e do seu potencial."),
-        ("Como dizer não pode salvar sua saúde mental", "Aprender a impor limites é um dos maiores sinais de maturidade emocional."),
-        ("O experimento dos doces: o que crianças ensinam sobre sucesso", "A paciência infantil revelou os segredos da disciplina e visão de longo prazo."),
-        ("Seu cérebro ama listas (e por isso elas funcionam tanto)", "Por que conteúdo em tópicos gera mais aprendizado e impacto."),
-        ("Como a gratidão reprograma sua mente para o positivo", "Neurociência por trás do poder de dizer obrigado."),
-        ("Você anda cansado demais? Pode ser decisão demais", "A ‘fadiga de decisão’ já afeta milhares — veja como minimizar."),
-        ("O poder de dormir bem: o que a ciência mostra além do descanso", "Sono regula foco, humor, memórias e até empatia."),
         ("Autossabotagem: como parar de ser seu pior inimigo", "Os padrões ocultos que te puxam pra trás — e como quebrar o ciclo."),
-        ("Como redes sociais afetam sua autoestima (sem você perceber)", "O feed pode parecer inocente, mas seu cérebro está fazendo comparações constantes."),
-        ("Respirar com intenção: o atalho da calma segundo a neurociência", "Técnicas de respiração ativam partes do cérebro ligadas à estabilidade emocional."),
-        ("Porque fazer nada também é fazer algo (e seu cérebro precisa disso)", "Momentos de pausa são tão valiosos quanto momentos de ação."),
         ("Você se compara demais? Descubra por que isso acontece e como mudar", "Comparação pode ser combustível ou veneno — tudo depende de como você lida."),
-        ("Como a dopamina controla sua motivação (e como usar isso a seu favor)", "A química da recompensa pode ser reprogramada com hábitos simples."),
-        ("Por que hábitos vencem a força de vontade", "Entenda como automatizar seu sucesso psicológico e emocional."),
-        ("Pare de se distrair: o que realmente foca sua mente segundo a ciência", "Foco é mais sobre eliminação do que sobre esforço."),
-        ("A regra dos 5 segundos: como enganar o cérebro para agir", "Uma técnica simples que interrompe a procrastinação antes que ela comece."),
         ("O poder da história que você conta sobre você mesmo", "Reescrever sua narrativa interna é um atalho para mudar sua vida."),
-        ("Como a música altera sua mente (e seus hormônios)", "A playlist certa pode ativar áreas do cérebro ligadas à motivação, memória e prazer."),
-        ("Você não precisa ser feliz o tempo todo (e está tudo bem)", "Aceitar emoções negativas é uma forma de inteligência emocional."),
-        ("Por que seu ambiente molda sua mente (mais do que você imagina)", "O lugar onde você vive e trabalha está influenciando seu comportamento agora.")
     ]
 
-    temas = random.sample(temas_possiveis, 3)
+    temas_media = [
+        ("Seu cérebro em overdose: o que a era da informação está fazendo com você", "Entenda por que nos sentimos tão cansados e como filtrar o excesso pode salvar sua sanidade."),
+        ("Como abraçar o tédio pode turbinar sua criatividade", "Estudos mostram que momentos de pausa ajudam a mente a se reorganizar e inovar."),
+        ("Mindset de crescimento: como pensar como quem vence", "Entenda como quem tem sucesso encara erros, desafios e mudanças."),
+        ("Como dizer não pode salvar sua saúde mental", "Aprender a impor limites é um dos maiores sinais de maturidade emocional."),
+        ("Você é aquilo que assiste: o impacto da mídia no seu humor", "O que você consome está moldando sua visão do mundo — e do seu potencial."),
+        ("Você não precisa ser feliz o tempo todo (e está tudo bem)", "Aceitar emoções negativas é uma forma de inteligência emocional."),
+    ]
+
+    temas_longtail = [
+        ("A ciência do bom humor: como pequenas ações mudam seu dia", "Estudos mostram como coisas simples como sorrir ou ouvir música influenciam diretamente sua química cerebral."),
+        ("Como o silêncio afeta seu cérebro (e pode te curar)", "Neurocientistas revelam como momentos de silêncio reestruturam seu foco, emoções e criatividade."),
+        ("Pequenas vitórias: o truque psicológico que cria gigantes", "A ciência mostra como celebrar pequenas conquistas muda sua autoimagem."),
+        ("Como a gratidão reprograma sua mente para o positivo", "Neurociência por trás do poder de dizer obrigado."),
+        ("Respirar com intenção: o atalho da calma segundo a neurociência", "Técnicas de respiração ativam partes do cérebro ligadas à estabilidade emocional."),
+        ("Por que hábitos vencem a força de vontade", "Entenda como automatizar seu sucesso psicológico e emocional."),
+    ]
+
+    with open(USADOS_PATH, "r") as f:
+        usados = f.read().splitlines()
+
+    temas_alta = [t for t in temas_alta if slugify(t[0]) not in usados]
+    temas_media = [t for t in temas_media if slugify(t[0]) not in usados]
+    temas_longtail = [t for t in temas_longtail if slugify(t[0]) not in usados]
+
+    if not temas_alta and not temas_media and not temas_longtail:
+        os.remove(USADOS_PATH)
+        print("🔁 Todos os temas foram utilizados. Reiniciando a lista para novo ciclo.")
+        exec(open(__file__).read())
+
+    dia_semana = datetime.now().weekday()  # segunda = 0, domingo = 6
+    estrategia = ""
+
+    if dia_semana in [0, 1]:  # segunda e terça
+        temas = random.sample(temas_alta, 3)
+        estrategia = "Alta performance"
+    elif dia_semana in [2, 3]:  # quarta e quinta
+        temas = random.sample(temas_media, 3)
+        estrategia = "Média performance"
+    else:  # sexta, sábado e domingo
+        temas = random.sample(temas_longtail, 3)
+        estrategia = "SEO Long Tail"
+
+    print(f"\n🚀 Estratégia do dia: {estrategia}")
+    print("📌 Temas selecionados:")
+    for i, (titulo, _) in enumerate(temas, start=1):
+        print(f"{i}. {titulo}")
+        with open("logs/execucao_diaria.txt", "a") as log:
+            log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | {estrategia} | {titulo}\n")
+    print()
 
     for titulo, descricao in temas:
+        with open(USADOS_PATH, "a") as f:
+            f.write(slugify(titulo) + "\n")
         gerar_post(titulo, descricao, prompt_imagem="")
