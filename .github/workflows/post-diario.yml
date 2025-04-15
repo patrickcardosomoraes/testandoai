@@ -30,28 +30,9 @@ jobs:
         run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
       - name: 🤖 Rodar o script de geração
-        run: |
-          USADOS_PATH = "logs/temas_usados.txt"
-          os.makedirs("logs", exist_ok=True)
-          if not os.path.exists(USADOS_PATH):
-              with open(USADOS_PATH, "w") as f:
-                  f.write("")
-
-          with open(USADOS_PATH, "r") as f:
-              usados = f.read().splitlines()
-
-          temas_alta = [t for t in temas_alta if slugify(t[0]) not in usados]
-          temas_media = [t for t in temas_media if slugify(t[0]) not in usados]
-          temas_longtail = [t for t in temas_longtail if slugify(t[0]) not in usados]
-
-          if not temas_alta and not temas_media and not temas_longtail:
-              os.remove(USADOS_PATH)
-              print("🔁 Todos os temas foram utilizados. Reiniciando a lista para novo ciclo.")
-              exit()
-
-          for titulo, descricao in temas:
-              with open(USADOS_PATH, "a") as f:
-                  f.write(slugify(titulo) + "\n")
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/gerar_post.py
 
       - name: 📤 Commit e Push dos novos posts
         run: |

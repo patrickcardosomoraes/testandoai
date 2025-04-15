@@ -35,6 +35,8 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add pages/posts/ public/results/
-          git commit -m "✨ Novo post automático com imagem gerada por IA" || echo "Nenhuma mudança"
-          git push
+          git add content/posts/ public/results/
+          git diff --quiet && echo "Nenhuma mudança" || (git commit -m "✨ Novo post automático com imagem gerada por IA" && git push)
+
+      - name: 🚀 Disparar deploy na Vercel
+        run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
