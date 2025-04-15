@@ -104,7 +104,7 @@ tags: ["mentalidade", "psicologia", "autoconhecimento"]
 
 """
 
-    caminho_diretorio = "posts"
+    caminho_diretorio = "content/posts"
     os.makedirs(caminho_diretorio, exist_ok=True)
 
     caminho_post = f"{caminho_diretorio}/{slug}-{data}.md"

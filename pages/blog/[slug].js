@@ -94,7 +94,7 @@ export default function BlogPost({ frontmatter, content }) {
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join('posts'));
+  const files = fs.readdirSync(path.join('content', 'posts'));
 
   const paths = files.map(filename => ({
     params: {
@@ -109,7 +109,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8');
+  const markdownWithMeta = fs.readFileSync(path.join('content', 'posts', slug + '.md'), 'utf-8');
   const { data: frontmatter, content: markdownContent } = matter(markdownWithMeta);
   const processedContent = await remark().use(html).process(markdownContent);
   const content = processedContent.toString();

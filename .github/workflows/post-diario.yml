@@ -6,35 +6,57 @@ on:
     - cron: '0 8 * * *'
     - cron: '0 14 * * *'
     - cron: '0 20 * * *'
-  workflow_dispatch:  # permite rodar manualmente também
+  workflow_dispatch:
 
 jobs:
   gerar-post:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do repositório
+      - name: 🔄 Clonar o repositório
         uses: actions/checkout@v3
 
-      - name: Instalar o Python
+      - name: 🐍 Instalar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: 📦 Instalar dependências
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Executar script de geração de post
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          python scripts/gerar_post.py
+      - name: 📄 Criar variáveis de ambiente
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
-      - name: Commit e Push do novo post (se houver mudanças)
+      - name: 🤖 Rodar o script de geração
         run: |
-          git config --global user.email "bot@testandoai.com"
-          git config --global user.name "PostBot"
-          git add posts/
-          git diff --quiet && echo "Sem mudanças." || (git commit -m "📝 Post automático gerado por IA" && git push)
+          USADOS_PATH = "logs/temas_usados.txt"
+          os.makedirs("logs", exist_ok=True)
+          if not os.path.exists(USADOS_PATH):
+              with open(USADOS_PATH, "w") as f:
+                  f.write("")
+
+          with open(USADOS_PATH, "r") as f:
+              usados = f.read().splitlines()
+
+          temas_alta = [t for t in temas_alta if slugify(t[0]) not in usados]
+          temas_media = [t for t in temas_media if slugify(t[0]) not in usados]
+          temas_longtail = [t for t in temas_longtail if slugify(t[0]) not in usados]
+
+          if not temas_alta and not temas_media and not temas_longtail:
+              os.remove(USADOS_PATH)
+              print("🔁 Todos os temas foram utilizados. Reiniciando a lista para novo ciclo.")
+              exit()
+
+          for titulo, descricao in temas:
+              with open(USADOS_PATH, "a") as f:
+                  f.write(slugify(titulo) + "\n")
+
+      - name: 📤 Commit e Push dos novos posts
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add posts/ public/results/ logs/
+          git commit -m "📝 Post automático gerado por IA" || echo "Nenhuma mudança"
+          git push

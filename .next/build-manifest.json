@@ -36,6 +36,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/blog/[slug].js"
+    ],
+    "/teste/mbti": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/teste/mbti.js"
     ]
   },
   "ampFirstPages": []
