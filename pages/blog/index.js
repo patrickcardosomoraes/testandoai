@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
+import FormularioEmail from '@/components/FormularioEmail';
 
 export default function Blog({ posts }) {
   return (
@@ -45,6 +46,13 @@ export default function Blog({ posts }) {
               </Link>
             ))}
           </main>
+
+          {/* FORMULÁRIO DE CAPTURA */}
+          <section className="mt-20 max-w-2xl mx-auto text-center px-4">
+            <h2 className="text-2xl font-bold text-[#2F6BB0] mb-4">Receba novidades no seu e-mail</h2>
+            <p className="text-sm text-gray-600 mb-6">Cadastre-se para receber atualizações com novos posts e dicas exclusivas.</p>
+            <FormularioEmail tag="blog-list" />
+          </section>
         </div>
       </Layout>
     </>

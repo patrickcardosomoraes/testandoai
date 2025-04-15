@@ -36,11 +36,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/blog/[slug].js"
-    ],
-    "/politica-de-privacidade": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/politica-de-privacidade.js"
     ]
   },
   "ampFirstPages": []

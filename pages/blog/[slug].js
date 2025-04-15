@@ -6,13 +6,21 @@ import html from 'remark-html';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
+import FormularioEmail from '@/components/FormularioEmail';
+import { useRouter } from 'next/router';
 
 export default function BlogPost({ frontmatter, content }) {
+  const router = useRouter();
+  const currentUrl = `https://testandoai.com.br${router.asPath}`;
+
   return (
     <>
       <Head>
         <title>{frontmatter.title} | TestandoAI</title>
         <meta name="description" content={frontmatter.excerpt || 'Conteúdo do blog TestandoAI'} />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:image" content={frontmatter.image} />
+        <meta property="og:url" content={currentUrl} />
       </Head>
 
       <Layout>
@@ -31,6 +39,48 @@ export default function BlogPost({ frontmatter, content }) {
 
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </article>
+
+          {/* Compartilhamento */}
+          <div className="mt-10 border-t pt-8">
+            <h3 className="text-lg font-semibold mb-2">Compartilhe este post</h3>
+            <div className="flex gap-3 flex-wrap">
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent(`${frontmatter.title} - ${currentUrl}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full transition"
+              >
+                Facebook
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${frontmatter.title} - ${currentUrl}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded-full transition"
+              >
+                X (Twitter)
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm bg-[#0077B5] hover:bg-[#005983] text-white px-4 py-2 rounded-full transition"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          {/* Formulário de e-mail */}
+          <FormularioEmail />
 
           <div className="mt-12">
             <Link href="/blog" className="text-sm underline text-[#2F6BB0] hover:text-[#1d4c8c]">

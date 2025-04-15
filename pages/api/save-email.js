@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Método não permitido' });
   }
 
-  const { email } = req.body;
+  const { email, origem } = req.body;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
     const { error: insertError } = await supabase
       .from('cadastro_testandoai')
-      .insert([{ email }]);
+      .insert([{ email, origem }]); // 👈 aqui tá o pulo do gato
 
     if (insertError) {
       console.error('Erro ao salvar e-mail:', insertError.message);
