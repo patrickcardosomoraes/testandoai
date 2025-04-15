@@ -1,0 +1,40 @@
+name: Post Diário Automático
+
+on:
+  schedule:
+    # Horários: 8h, 14h e 20h (UTC = 5h, 11h, 17h no Brasil)
+    - cron: '0 8 * * *'
+    - cron: '0 14 * * *'
+    - cron: '0 20 * * *'
+  workflow_dispatch:  # permite rodar manualmente também
+
+jobs:
+  gerar-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar script de geração de post
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/gerar_post.py
+
+      - name: Commit e Push do novo post (se houver mudanças)
+        run: |
+          git config --global user.email "bot@testandoai.com"
+          git config --global user.name "PostBot"
+          git add posts/
+          git diff --quiet && echo "Sem mudanças." || (git commit -m "📝 Post automático gerado por IA" && git push)
