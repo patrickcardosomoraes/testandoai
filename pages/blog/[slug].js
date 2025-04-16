@@ -34,7 +34,6 @@ export default function BlogPost({ frontmatter, content }) {
               />
             )}
 
-            <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
             <p className="text-gray-500 text-sm mb-6">{frontmatter.date}</p>
 
             <div dangerouslySetInnerHTML={{ __html: content }} />
