@@ -34,7 +34,7 @@ jobs:
         working-directory: scripts
         run: python postar_em_lote.py
 
-        - name: 📤 Commit e Push dos novos posts
+      - name: 📤 Commit e Push dos novos posts
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
