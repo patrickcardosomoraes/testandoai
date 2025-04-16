@@ -84,12 +84,12 @@ def gerar_post(titulo, descricao, prompt_imagem=""):
     conteudo = inserir_errinhos(resposta.choices[0].message.content)
 
     prompt_imagem_melhorado = (
-        f"A cinematic, emotionally evocative scene that visually represents the essence of the topic: '{titulo}'. "
-        f"The image should reflect the core message: '{descricao}', using natural light, warm tones, and a sense of peaceful reflection. "
-        "Include elements like cozy textures (blankets, cushions), subtle Scandinavian-inspired decor, and a soft-focus background. "
-        "The composition should feel intimate and serene, capturing the emotion through body language or symbolic imagery. "
-        "Style: ultra-realistic, editorial photography, soft lighting, shot in 16:9 format."
-    )
+    f"A cinematic, emotionally powerful scene illustrating the topic: '{titulo}'. "
+    f"The visual should express the idea: '{descricao}' using warm light, cozy textures, and a peaceful mood. "
+    "Include soft blankets, cushions, minimalist Scandinavian decor, and a calm environment. "
+    "The composition should feel intimate, with natural lighting and subtle symbolic elements. "
+    "Style: ultra-realistic, soft focus, editorial photo, 16:9 format."
+)
 
     caminho_imagem = gerar_imagem(prompt_imagem_melhorado, slug)
 
