@@ -1,28 +1,54 @@
 from datetime import datetime
 import os
 import sys
+from openai import OpenAI
+from dotenv import load_dotenv
+from pathlib import Path
+import random
+import json
 
-# Adiciona o diretório atual ao sys.path para importar o gerar_post.py corretamente
+load_dotenv(dotenv_path=Path(".env"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# 🔧 Garante que o script 'gerar_post.py' será encontrado corretamente
 sys.path.append(os.path.dirname(__file__))
+
+# 🧠 Importa a função principal de geração
 from gerar_post import gerar_post
 
-# === Lista de temas com títulos e descrições ===
-posts = [
-    {
-        "titulo": "O que a ciência descobriu sobre gratidão e saúde mental",
-        "descricao": "Veja como o simples ato de agradecer pode transformar seu bem-estar emocional, com base em pesquisas reais.",
-    },
-    {
-        "titulo": "A verdade sobre multitarefa: produtividade ou sabotagem?",
-        "descricao": "Descubra porque fazer muitas coisas ao mesmo tempo pode estar acabando com sua produtividade — e como mudar isso.",
-    },
-    {
-        "titulo": "Por que você sempre sente que não fez o suficiente (mesmo tendo feito muito)",
-        "descricao": "Entenda o fenômeno da autocobrança e como ele pode estar distorcendo sua percepção de valor e conquista.",
-    }
-]
+def gerar_novos_temas():
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "Você é um especialista em marketing de conteúdo, com foco em psicologia, produtividade e alta performance."
+            },
+            {
+                "role": "user",
+                "content": (
+                    "Gere 3 temas de post de blog com foco em psicologia, produtividade, alta performance e mentalidade positiva. "
+                    "Cada um deve ter:\n"
+                    "- Título chamativo\n"
+                    "- Descrição curta e emocional\n"
+                    "Retorne em formato JSON com a estrutura: "
+                    "[{\"titulo\": \"...\", \"descricao\": \"...\"}, ...]"
+                )
+            }
+        ]
+    )
 
-# === Função que insere errinhos propositalmente na descrição ===
+    conteudo = response.choices[0].message.content.strip()
+    try:
+        return json.loads(conteudo)
+    except json.JSONDecodeError:
+        print("⚠️ Erro ao interpretar a resposta da OpenAI. Conteúdo bruto:")
+        print(conteudo)
+        return []
+
+posts = gerar_novos_temas()
+
+# 🤖 Insere até 2 "errinhos" para parecer texto mais humano
 def inserir_errinhos(texto):
     erros = [
         (" por que ", " porque "),
@@ -31,11 +57,12 @@ def inserir_errinhos(texto):
         (" está ", " esta "),
         (" é ", " e "),
     ]
-    for errado, certo in erros[:2]:  # insere até 2 erros por texto
+    for errado, certo in erros[:2]:
         texto = texto.replace(errado, certo, 1)
     return texto
 
-# === Geração dos posts com pequenas alterações no texto ===
+# 🚀 Gera os posts automaticamente
 for post in posts:
-    post["descricao"] = inserir_errinhos(post["descricao"])
-    gerar_post(post["titulo"], post["descricao"], prompt_imagem="")
+    titulo = post["titulo"]
+    descricao = inserir_errinhos(post["descricao"])
+    gerar_post(titulo, descricao, prompt_imagem="")

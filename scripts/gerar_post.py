@@ -26,7 +26,7 @@ def salvar_imagem(image_url, slug):
     img = img.resize((1370, 768))
     nome_arquivo = f"public/images/{slug}.webp"
     img.save(nome_arquivo, "WEBP", quality=80)
-    return f"/images/{slug}.webp"  # ✅ Caminho correto
+    return f"/images/{slug}.webp"
 
 # 🧠 Gera imagem via DALL·E
 def gerar_imagem(prompt, slug):
@@ -83,11 +83,11 @@ def gerar_post(titulo, descricao, prompt_imagem=""):
     conteudo = inserir_errinhos(resposta.choices[0].message.content)
 
     prompt_imagem_melhorado = (
-    f"A cinematic, emotionally powerful scene illustrating the topic: '{titulo}'. "
-    f"The visual should express the idea: '{descricao}' using warm light, cozy textures, and a peaceful mood. "
-    "Include soft blankets, cushions, minimalist Scandinavian decor, and a calm environment. "
-    "The composition should feel intimate, with natural lighting and subtle symbolic elements. "
-    "Style: ultra-realistic, soft focus, editorial photo, 16:9 format."
+    f"A cinematic and emotionally inspiring scene representing the theme: '{titulo}'. "
+    f"The image should express the concept: '{descricao}', with warm natural lighting and a sense of calm focus. "
+    "Include a minimalist, organized workspace with a notebook or laptop, a cup of coffee or tea, and subtle elements like indoor plants or natural textures. "
+    "Avoid distractions — the mood should reflect deep thought, clarity, and motivation. "
+    "Style: ultra-realistic, soft focus, editorial photography. Format: 16:9 horizontal."
 )
 
     caminho_imagem = gerar_imagem(prompt_imagem_melhorado, slug)
@@ -116,4 +116,4 @@ tags: ["mentalidade", "psicologia", "autoconhecimento"]
         f.write(front_matter + conteudo)
 
     print(f"✅ Post salvo: {caminho_post}")
-    print(f"🖼️ Imagem salva: public{caminho_imagem}")
+    print(f"🖼️ Imagem salva: /images/{slug}.webp")
