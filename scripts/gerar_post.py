@@ -78,11 +78,12 @@ def gerar_post(titulo, descricao, prompt_imagem=""):
     conteudo = inserir_errinhos(resposta.choices[0].message.content)
 
     prompt_imagem_melhorado = (
-        f"A visually inspiring scene related to the topic: '{titulo}'. "
-        f"Create a calm, cozy, softly lit environment that visually expresses the idea: '{descricao}'. "
-        "Use warm tones, Scandinavian minimalist decor, soft textures like blankets or cushions, "
-        "relaxed posture of a person or symbolic composition, realistic style, cinematic lighting, 16:9 aspect ratio"
-    )
+    f"A cinematic, emotionally evocative scene that visually represents the essence of the topic: '{titulo}'. "
+    f"The image should reflect the core message: '{descricao}', using natural light, warm tones, and a sense of peaceful reflection. "
+    "Include elements like cozy textures (blankets, cushions), subtle Scandinavian-inspired decor, and a soft-focus background. "
+    "The composition should feel intimate and serene, capturing the emotion through body language or symbolic imagery. "
+    "Style: ultra-realistic, editorial photography, soft lighting, shot in 16:9 format."
+)
 
     caminho_imagem = gerar_imagem(prompt_imagem_melhorado, slug)
 
@@ -97,16 +98,20 @@ tags: ["mentalidade", "psicologia", "autoconhecimento"]
 
 """
 
-    caminho_diretorio = "content/posts"
-    os.makedirs(caminho_diretorio, exist_ok=True)
-    caminho_post = f"{caminho_diretorio}/{slug}-{data}.md"
+    from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+caminho_diretorio = BASE_DIR / "content/posts"
+caminho_diretorio.mkdir(parents=True, exist_ok=True)
+
+caminho_post = caminho_diretorio / f"{slug}-{data}.md"
 
     if os.path.exists(caminho_post):
         print(f"⚠️ Post já existe: {caminho_post}")
         return
 
     with open(caminho_post, "w") as f:
-        f.write(front_matter + conteudo)
+    f.write(front_matter + conteudo)
 
     print(f"✅ Post salvo: {caminho_post}")
     print(f"🖼️ Imagem salva: public{caminho_imagem}")
