@@ -3,7 +3,7 @@ title: "Psicologia da Produtividade: Domine sua Mente para Alcançar a Alta Perf
 excerpt: "Você é o mestre de sua mente ou é escravo dela? Mergulhe no mundo da psicologia produtiva e descubra como comandar sua mente para alcançar níveis de performance que você jamais pensou serem possíveis."
 date: "2025-04-16"
 slug: "psicologia-da-produtividade-domine-sua-mente-para-alcancar-a-alta-performance"
-image: "/images/psicologia-da-produtividade-domine-sua-mente-para-alcancar-a-alta-performance.webp"
+image: "/images/images/psicologia-da-produtividade-domine-sua-mente-para-alcancar-a-alta-performance.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

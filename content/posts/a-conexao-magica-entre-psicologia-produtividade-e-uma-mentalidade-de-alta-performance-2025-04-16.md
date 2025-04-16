@@ -3,7 +3,7 @@ title: "A Conexão Mágica entre Psicologia, Produtividade, e uma Mentalidade de
 excerpt: "Embarque nesta jornada emocionante para explorar a interface entre psicologia, produtividade e mentalidade de alta performance. Aprenda novas táticas e abraçe uma vida mas próspera e realizada."
 date: "2025-04-16"
 slug: "a-conexao-magica-entre-psicologia-produtividade-e-uma-mentalidade-de-alta-performance"
-image: "/images/a-conexao-magica-entre-psicologia-produtividade-e-uma-mentalidade-de-alta-performance.webp"
+image: "/images/images/a-conexao-magica-entre-psicologia-produtividade-e-uma-mentalidade-de-alta-performance.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

@@ -3,7 +3,7 @@ title: "Desbloqueie sua Mente: Descubra o Poder da Psicologia na Produtividade"
 excerpt: "Imagine se a chave para a produtividade não estivesse em um aplicativo ou lista, mas escondida dentro de você? Explore o fascinante mundo da psicologia e aprenda como transformar seu cérebro em sua ferramenta mas poderosa de alta performance."
 date: "2025-04-16"
 slug: "desbloqueie-sua-mente-descubra-o-poder-da-psicologia-na-produtividade"
-image: "/images/desbloqueie-sua-mente-descubra-o-poder-da-psicologia-na-produtividade.webp"
+image: "/images/images/desbloqueie-sua-mente-descubra-o-poder-da-psicologia-na-produtividade.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

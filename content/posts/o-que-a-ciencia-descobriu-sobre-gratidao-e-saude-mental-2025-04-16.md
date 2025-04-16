@@ -3,7 +3,7 @@ title: "O que a ciência descobriu sobre gratidão e saúde mental"
 excerpt: "Veja como o simples ato de agradecer pode transformar seu bem-estar emocional, com base em pesquisas reais."
 date: "2025-04-16"
 slug: "o-que-a-ciencia-descobriu-sobre-gratidao-e-saude-mental"
-image: "/images/o-que-a-ciencia-descobriu-sobre-gratidao-e-saude-mental.webp"
+image: "/images/images/o-que-a-ciencia-descobriu-sobre-gratidao-e-saude-mental.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

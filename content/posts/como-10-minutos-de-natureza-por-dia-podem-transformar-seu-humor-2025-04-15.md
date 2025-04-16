@@ -3,7 +3,7 @@ title: "Como 10 minutos de natureza por dia podem transformar seu humor"
 excerpt: "Você não precisa mudar de vida — só se reconectar com o básico. Veja como um pouco de sol, verde e respiração consciente impactam seu cérebro."
 date: "2025-04-15"
 slug: "como-10-minutos-de-natureza-por-dia-podem-transformar-seu-humor"
-image: "/images/como-10-minutos-de-natureza-por-dia-podem-transformar-seu-humor.webp"
+image: "/images/images/como-10-minutos-de-natureza-por-dia-podem-transformar-seu-humor.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

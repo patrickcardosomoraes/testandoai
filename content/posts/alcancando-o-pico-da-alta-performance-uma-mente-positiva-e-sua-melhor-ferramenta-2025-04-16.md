@@ -3,7 +3,7 @@ title: "Alcançando o pico da Alta Performance: Uma mente positiva é sua melhor
 excerpt: "Investigar como a mentalidade positiva pode impulsionar você a novos patamares de produtividade, eficiência e sucesso na vida pessoal e profissional. O poder está em suas mãos."
 date: "2025-04-16"
 slug: "alcancando-o-pico-da-alta-performance-uma-mente-positiva-e-sua-melhor-ferramenta"
-image: "/images/alcancando-o-pico-da-alta-performance-uma-mente-positiva-e-sua-melhor-ferramenta.webp"
+image: "/images/images/alcancando-o-pico-da-alta-performance-uma-mente-positiva-e-sua-melhor-ferramenta.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

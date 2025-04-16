@@ -3,7 +3,7 @@ title: "Alcançando a Alta Performance através da Autocompaixão e do Crescimen
 excerpt: "Explore como a psicologia positiva, o autocuidado e uma mentalidade focada no crescimento podem levar você a novos patamares de produtividade e realização pessoal."
 date: "2025-04-16"
 slug: "alcancando-a-alta-performance-atraves-da-autocompaixao-e-do-crescimento-pessoal"
-image: "/images/alcancando-a-alta-performance-atraves-da-autocompaixao-e-do-crescimento-pessoal.webp"
+image: "/images/images/alcancando-a-alta-performance-atraves-da-autocompaixao-e-do-crescimento-pessoal.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

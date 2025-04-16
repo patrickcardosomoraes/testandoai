@@ -3,7 +3,7 @@ title: "Como a Psicologia pode Aumentar sua Produtividade e Alta Performance?"
 excerpt: "Descubra como a ciência do comportamento humano pode desvendar segredos para melhorar sua capacidade de realizar tarefas de maneira eficiente e eficaz para conquistar uma alta performance."
 date: "2025-04-16"
 slug: "como-a-psicologia-pode-aumentar-sua-produtividade-e-alta-performance"
-image: "/images/como-a-psicologia-pode-aumentar-sua-produtividade-e-alta-performance.webp"
+image: "/images/images/como-a-psicologia-pode-aumentar-sua-produtividade-e-alta-performance.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

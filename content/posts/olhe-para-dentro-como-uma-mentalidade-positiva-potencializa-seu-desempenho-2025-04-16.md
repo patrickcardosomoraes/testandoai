@@ -3,7 +3,7 @@ title: "Olhe para Dentro: Como uma Mentalidade Positiva Potencializa seu Desempe
 excerpt: "Já se sentiu travado por pensamentos negativos que impedem seu avanço? Aprenda a cultivar uma mentalidade positiva e descubra como isso pode levar sua produtividade a novos patamares, proporcionando sucesso verdadeiro e autêntico em todos os aspectos de sua vida."
 date: "2025-04-16"
 slug: "olhe-para-dentro-como-uma-mentalidade-positiva-potencializa-seu-desempenho"
-image: "/images/olhe-para-dentro-como-uma-mentalidade-positiva-potencializa-seu-desempenho.webp"
+image: "/images/images/olhe-para-dentro-como-uma-mentalidade-positiva-potencializa-seu-desempenho.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 
