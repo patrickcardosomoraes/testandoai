@@ -5,7 +5,7 @@ on:
     - cron: '0 12 * * *'   # 9h (horário de Brasília)
     - cron: '0 18 * * *'   # 15h BRT
     - cron: '0 0 * * *'    # 21h BRT
-  workflow_dispatch:
+  workflow_dispatch:  # 👈 Ativa o botão "Run workflow"
 
 jobs:
   gerar-post:
@@ -25,10 +25,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 📄 Criar variáveis de ambiente
+           - name: 📄 Criar variáveis de ambiente
         run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
 
-        - name: 🤖 Rodar o script de geração
+      - name: 🤖 Rodar o script de geração
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         working-directory: scripts
