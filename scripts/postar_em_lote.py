@@ -4,7 +4,7 @@ import sys
 
 # Garante que podemos importar o gerar_post.py da mesma pasta
 sys.path.append(os.path.dirname(__file__))
-from gerar_post import gerar_post
+from scripts.gerar_post import gerar_post
 
 # === Temas com horário sugerido ===
 posts = [
