@@ -20,11 +20,14 @@ def slugify(text):
     return re.sub(r'[^a-z0-9]+', '-', text).strip('-')
 
 def salvar_imagem(image_url, slug):
-    os.makedirs("public/images", exist_ok=True)
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    images_dir = BASE_DIR / "public/images"
+    images_dir.mkdir(parents=True, exist_ok=True)
+
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content)).convert("RGB")
     img = img.resize((1370, 768))
-    nome_arquivo = f"public/images/{slug}.webp"
+    nome_arquivo = images_dir / f"{slug}.webp"
     img.save(nome_arquivo, "WEBP", quality=80)
     return f"/images/{slug}.webp"
 
