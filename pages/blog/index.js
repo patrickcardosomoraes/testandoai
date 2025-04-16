@@ -1,3 +1,4 @@
+// pages/blog/index.js
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -7,7 +8,9 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import FormularioEmail from '@/components/FormularioEmail';
 
-export default function Blog({ posts }) {
+const POSTS_PER_PAGE = 6;
+
+export default function Blog({ posts, currentPage, totalPages }) {
   return (
     <>
       <Head>
@@ -17,13 +20,11 @@ export default function Blog({ posts }) {
 
       <Layout>
         <div className="px-4 pb-12">
-          {/* CABEÇALHO */}
           <header className="text-center py-10">
             <h1 className="text-3xl font-bold">Nosso Blog</h1>
             <p className="text-gray-600 mt-2">Descubra conteúdos valiosos sobre mente, corpo e bem-estar.</p>
           </header>
 
-          {/* POSTS */}
           <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
@@ -39,6 +40,7 @@ export default function Blog({ posts }) {
                       />
                     </div>
                   )}
+                  <p className="text-xs font-semibold text-[#2CB49D] mb-1 uppercase">{frontmatter.tags?.[0]}</p>
                   <h2 className="text-xl font-semibold mb-2 text-[#2F6BB0]">{frontmatter.title}</h2>
                   <p className="text-gray-600 text-sm line-clamp-3">{frontmatter.excerpt}</p>
                   <p className="text-sm text-gray-400 mt-2">Publicado em {frontmatter.date}</p>
@@ -47,12 +49,19 @@ export default function Blog({ posts }) {
             ))}
           </main>
 
-          {/* FORMULÁRIO DE CAPTURA */}
-          <section className="mt-20 max-w-2xl mx-auto text-center px-4">
-            <h2 className="text-2xl font-bold text-[#2F6BB0] mb-4">Receba novidades no seu e-mail</h2>
-            <p className="text-sm text-gray-600 mb-6">Cadastre-se para receber atualizações com novos posts e dicas exclusivas.</p>
-            <FormularioEmail tag="blog-list" />
-          </section>
+          {/* PAGINAÇÃO */}
+          <div className="flex justify-center items-center gap-4 mt-10">
+            {currentPage > 1 && (
+              <Link href={`/blog/page/${currentPage - 1}`} className="text-[#2F6BB0]">&larr; Anterior</Link>
+            )}
+            <span className="text-gray-600">Página {currentPage} de {totalPages}</span>
+            {currentPage < totalPages && (
+              <Link href={`/blog/page/${currentPage + 1}`} className="text-[#2F6BB0]">Próxima &rarr;</Link>
+            )}
+          </div>
+
+                    {/* FORMULÁRIO DE CAPTURA */}
+                    <FormularioEmail tag="blog-list" />
         </div>
       </Layout>
     </>
@@ -61,21 +70,22 @@ export default function Blog({ posts }) {
 
 export async function getStaticProps() {
   const files = fs.readdirSync(path.join('content', 'posts'));
-
-  const posts = files.map((filename) => {
+  const posts = files.map(filename => {
     const slug = filename.replace('.md', '');
     const markdownWithMeta = fs.readFileSync(path.join('content', 'posts', filename), 'utf-8');
     const { data: frontmatter } = matter(markdownWithMeta);
-
-    return {
-      slug,
-      frontmatter,
-    };
+    return { slug, frontmatter };
   });
+
+  const currentPage = 1;
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const paginatedPosts = posts.slice(0, POSTS_PER_PAGE);
 
   return {
     props: {
-      posts,
+      posts: paginatedPosts,
+      currentPage,
+      totalPages,
     },
   };
 }
