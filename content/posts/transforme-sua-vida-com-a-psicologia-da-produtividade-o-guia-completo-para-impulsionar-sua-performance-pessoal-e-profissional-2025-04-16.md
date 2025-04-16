@@ -4,14 +4,29 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* Fonte e ícones Font Awesome */}
+        <meta name="google-site-verification" content="G2248zuyTrDIKZlW2DUMIKSU_QNlL_5Gqu6Vis_wwUk" />
+        {/* Preload Font Awesome font */}
+        <link
+          rel="preload"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Font Awesome para ícones sociais */}
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-          integrity="sha512-papjW8DCTxGe4FZs9QhMKLC8Q5RmLw9LmlndKn0m23lFYuKJk27ivymVu1tIPTUbKD/S4vV7ShNpPNRZ0bx8mg=="
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKB4Imkb9QVRcHJ1UFlLJ+EnI7YqgyTy45XBjv8CflimUsIHfvZKE8fPlK9NZKu1vFJSk2n1w=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          />
+        </noscript>
       </Head>
       <body>
         <Main />
