@@ -2,7 +2,7 @@
 title: "A Verdade Sobre Mente Fixa e Mente de Crescimento"
 excerpt: "O que realmente te impede de crescer? Descubra como mudar sua mentalidade e liberar seu verdadeiro potencial."
 date: "2025-04-14"
-image: "/blog/mentalidade-crescimento-vs-fixa.jpeg"
+image: "/images/mentalidade-crescimento-vs-fixa.jpeg"
 ---
 
 Você já se pegou pensando:  

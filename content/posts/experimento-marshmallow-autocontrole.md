@@ -2,7 +2,7 @@
 title: "Paciência: O Superpoder Que Previu o Sucesso"
 excerpt: "O experimento com marshmallows revelou algo surpreendente: quem consegue esperar, costuma vencer. Entenda o porquê — e como treinar isso em você."
 date: "2025-04-14"
-image: "/blog/experimento-marshmallow-autocontrole.jpeg"
+image: "/images/experimento-marshmallow-autocontrole.jpeg"
 ---
 
 Você toparia ganhar **um doce agora** ou **dois se esperasse 15 minutos?**  

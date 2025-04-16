@@ -3,7 +3,7 @@ title: "Multitarefa está acabando com sua produtividade? Veja o que dizem os ne
 excerpt: "Fazer várias coisas ao mesmo tempo pode parecer eficaz — mas o cérebro humano não foi feito pra isso. Saiba o que a ciência revela."
 date: "2025-04-15"
 slug: "multitarefa-esta-acabando-com-sua-produtividade-veja-o-que-dizem-os-neurocientistas"
-image: "/results/multitarefa-esta-acabando-com-sua-produtividade-veja-o-que-dizem-os-neurocientistas.webp"
+image: "/images/multitarefa-esta-acabando-com-sua-produtividade-veja-o-que-dizem-os-neurocientistas.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Mentalidade Forte: O Que Ninguém Te Conta"
 excerpt: "Desenvolver uma mente forte é mais simples do que parece. Descubra 5 atitudes que mudam o jogo e elevam sua vida em 2025."
 date: "2025-04-14"
-image: "/blog/como-melhorar-saude-mental-2025-blog-testandoai.jpeg"
+image: "/images/como-melhorar-saude-mental-2025-blog-testandoai.jpeg"
 ---
 
 Você já percebeu que pessoas com **mentalidade forte** não são as mais inteligentes, nem as mais ricas?

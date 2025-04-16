@@ -3,7 +3,7 @@ title: "A verdade sobre multitarefa: produtividade ou sabotagem?"
 excerpt: "Descubra porque fazer muitas coisas ao mesmo tempo pode estar acabando com sua produtividade — e como mudar isso."
 date: "2025-04-16"
 slug: "a-verdade-sobre-multitarefa-produtividade-ou-sabotagem"
-image: "/results/a-verdade-sobre-multitarefa-produtividade-ou-sabotagem.webp"
+image: "/images/a-verdade-sobre-multitarefa-produtividade-ou-sabotagem.jpeg"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

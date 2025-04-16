@@ -3,7 +3,7 @@ title: "O experimento que mostrou como as crianças enxergam o futuro"
 excerpt: "Descubra o que a ciência aprendeu observando a paciência infantil — e como isso revela muito sobre o sucesso na vida adulta."
 date: "2025-04-15"
 slug: "o-experimento-que-mostrou-como-as-criancas-enxergam-o-futuro"
-image: "/results/o-experimento-que-mostrou-como-as-criancas-enxergam-o-futuro.webp"
+image: "/images/o-experimento-que-mostrou-como-as-criancas-enxergam-o-futuro.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

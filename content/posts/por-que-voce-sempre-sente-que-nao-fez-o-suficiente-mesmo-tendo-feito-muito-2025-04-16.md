@@ -3,7 +3,7 @@ title: "Por que você sempre sente que não fez o suficiente (mesmo tendo feito 
 excerpt: "Entenda o fenômeno da autocobrança e como ele pode estar distorcendo sua percepção de valor e conquista."
 date: "2025-04-16"
 slug: "por-que-voce-sempre-sente-que-nao-fez-o-suficiente-mesmo-tendo-feito-muito"
-image: "/results/por-que-voce-sempre-sente-que-nao-fez-o-suficiente-mesmo-tendo-feito-muito.webp"
+image: "/images/por-que-voce-sempre-sente-que-nao-fez-o-suficiente-mesmo-tendo-feito-muito.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 
