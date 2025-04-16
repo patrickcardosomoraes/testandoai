@@ -3,7 +3,7 @@ title: "Descobrindo o segredo da Mente Positiva para o Alto Desempenho Profissio
 excerpt: "Mergulhe no poder do pensamento otimista e descubra como uma mentalidade positiva pode aumentar drasticamente sua produtividade e performance geral."
 date: "2025-04-16"
 slug: "descobrindo-o-segredo-da-mente-positiva-para-o-alto-desempenho-profissional"
-image: "/images/images/descobrindo-o-segredo-da-mente-positiva-para-o-alto-desempenho-profissional.webp"
+image: "/images/descobrindo-o-segredo-da-mente-positiva-para-o-alto-desempenho-profissional.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 

@@ -3,7 +3,7 @@ title: "Como hobbies tradicionais podem melhorar sua saúde mental"
 excerpt: "Descubra o poder de atividades simples como tricô, jardinagem e escrita no equilíbrio emocional."
 date: "2025-04-15"
 slug: "como-hobbies-tradicionais-podem-melhorar-sua-saude-mental"
-image: "/images/images/como-hobbies-tradicionais-podem-melhorar-sua-saude-mental.webp"
+image: "/images/como-hobbies-tradicionais-podem-melhorar-sua-saude-mental.webp"
 tags: ["mentalidade", "psicologia", "autoconhecimento"]
 ---
 
