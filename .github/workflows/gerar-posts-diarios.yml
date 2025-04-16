@@ -34,13 +34,13 @@ jobs:
         working-directory: scripts
         run: python postar_em_lote.py
 
-      - name: 📤 Commit e Push dos novos posts
+        - name: 📤 Commit e Push dos novos posts
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/patrickcardosomoraes/testandoai.git
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/patrickcardosomoraes/testandoai.git
           git add content/posts/ public/results/ logs/ || echo "Nada para adicionar"
           git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
           git push origin main
