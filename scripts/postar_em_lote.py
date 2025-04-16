@@ -38,4 +38,4 @@ def inserir_errinhos(texto):
 # === Geração dos posts com pequenas alterações no texto ===
 for post in posts:
     post["descricao"] = inserir_errinhos(post["descricao"])
-    gerar_post(post["titulo"], post["descricao"], prompt="")
+    gerar_post(post["titulo"], post["descricao"], prompt_imagem="")
