@@ -19,15 +19,14 @@ def slugify(text):
     text = unidecode.unidecode(text.lower())
     return re.sub(r'[^a-z0-9]+', '-', text).strip('-')
 
-# 🖼️ Salva imagem no formato e tamanho corretos
 def salvar_imagem(image_url, slug):
-    os.makedirs("public/results", exist_ok=True)
+    os.makedirs("public/images", exist_ok=True)
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content)).convert("RGB")
     img = img.resize((1370, 768))
-    nome_arquivo = f"public/results/{slug}.webp"
+    nome_arquivo = f"public/images/{slug}.webp"
     img.save(nome_arquivo, "WEBP", quality=80)
-    return f"/results/{slug}.webp"
+    return f"/images/{slug}.webp"  # ✅ Caminho correto
 
 # 🧠 Gera imagem via DALL·E
 def gerar_imagem(prompt, slug):
