@@ -41,6 +41,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/patrickcardosomoraes/testandoai.git
           git add .  # ✅ adiciona tudo
           git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
+          git pull --rebase origin main || echo "Sem mudanças remotas"
           git push origin main
 
       - name: 🚀 Disparar deploy na Vercel
