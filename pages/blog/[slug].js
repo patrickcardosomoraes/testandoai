@@ -26,12 +26,16 @@ export default function BlogPost({ frontmatter, content }) {
       <Layout>
         <div className="flex-1 max-w-3xl mx-auto px-6 py-12 text-[#2F6BB0]">
           <article className="prose lg:prose-lg prose-blue max-w-none">
-            {frontmatter.image && (
+            {frontmatter.image ? (
               <img
                 src={frontmatter.image}
                 alt={frontmatter.title}
                 className="w-full rounded-xl mb-6"
               />
+            ) : (
+              <div className="w-full h-[250px] bg-gray-100 flex items-center justify-center rounded-xl mb-6 text-gray-400 text-sm italic">
+                Imagem não disponível
+              </div>
             )}
 
             <p className="text-gray-500 text-sm mb-6">{frontmatter.date}</p>
