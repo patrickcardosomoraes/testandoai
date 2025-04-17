@@ -1,5 +1,3 @@
-
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -29,7 +27,7 @@ export default function TagPage({ tag, posts }) {
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
                 <article>
                   {frontmatter.image && (
-                    <div className="mb-4 rounded overflow-hidden">
+                    <div className="mb-4 rounded-xl overflow-hidden">
                       <Image
                         src={frontmatter.image}
                         alt={frontmatter.title}

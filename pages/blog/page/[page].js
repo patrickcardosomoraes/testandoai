@@ -42,7 +42,7 @@ export default function BlogPage({ posts, currentPage, totalPages }) {
             {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
                 <article>
-                  {frontmatter.image && (
+                  {frontmatter.image ? (
                     <div className="mb-4 rounded overflow-hidden">
                       <Image
                         src={frontmatter.image}
@@ -52,7 +52,7 @@ export default function BlogPage({ posts, currentPage, totalPages }) {
                         className="rounded-xl object-cover"
                       />
                     </div>
-                  )}
+                  ) : null}
                   <h2 className="text-xl font-semibold mb-2 text-[#2F6BB0]">{frontmatter.title}</h2>
                   <p className="text-gray-600 text-sm line-clamp-3">{frontmatter.excerpt}</p>
                   <p className="text-sm text-gray-400 mt-2">Publicado em {frontmatter.date}</p>

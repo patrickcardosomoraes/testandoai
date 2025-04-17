@@ -112,9 +112,10 @@ export async function getStaticProps({ params }) {
     return { slug, frontmatter };
   }).filter(post => (post.frontmatter.tags || []).map(t => t.toLowerCase()).includes(tag));
 
-  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+  const sortedPosts = filtered.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
   const start = (page - 1) * POSTS_PER_PAGE;
-  const paginatedPosts = filtered.slice(start, start + POSTS_PER_PAGE);
+  const paginatedPosts = sortedPosts.slice(start, start + POSTS_PER_PAGE);
 
   return {
     props: {

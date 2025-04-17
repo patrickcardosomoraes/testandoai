@@ -38,7 +38,7 @@ export default function Blog({ posts, currentPage, totalPages }) {
           </div>
  
           <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {posts.map(({ slug, frontmatter }) => (
+          {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
                 <article>
                   {frontmatter.image && (
@@ -133,20 +133,21 @@ export default function Blog({ posts, currentPage, totalPages }) {
 
 export async function getStaticProps() {
   const files = fs.readdirSync(path.join('content', 'posts'));
-  const posts = files.map(filename => {
-    const slug = filename.replace('.md', '');
-    const markdownWithMeta = fs.readFileSync(path.join('content', 'posts', filename), 'utf-8');
-    const { data: frontmatter } = matter(markdownWithMeta);
-    return { slug, frontmatter };
-  }).sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+  const sortedPosts = files
+    .map(filename => {
+      const slug = filename.replace('.md', '');
+      const markdownWithMeta = fs.readFileSync(path.join('content', 'posts', filename), 'utf-8');
+      const { data: frontmatter } = matter(markdownWithMeta);
+      return { slug, frontmatter };
+    })
+    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 
   const currentPage = 1;
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const paginatedPosts = posts.slice(0, POSTS_PER_PAGE);
-
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  
   return {
     props: {
-      posts: paginatedPosts,
+      posts: sortedPosts.slice(0, POSTS_PER_PAGE), // força os mais recentes
       currentPage,
       totalPages,
     },

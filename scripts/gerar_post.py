@@ -28,22 +28,35 @@ def gerar_post():
 
     client = OpenAI(api_key=api_key)
     prompt_usuario = (
-        "Você é um redator profissional especialista em temas de mentalidade, produtividade, saúde mental e bem-estar. "
-        "Gere um post de blog em Markdown otimizado para SEO sobre um tema altamente relevante e atual, escolhido de forma aleatória "
-        "com base nas categorias mais populares do blog 'TestandoAI'. O estilo do texto deve ser inspirador, escaneável e emocional, com toques de storytelling. "
-        "Use título chamativo, subtítulos com emojis, listas com bullets, blocos de citação, e uma conclusão com CTA suave para salvar e compartilhar. "
-        "Insira intencionalmente até 2 pequenos erros de português no meio do texto para parecer mais humano. "
-        "Formato: Markdown. Idioma: Português."
+        "Você é um redator profissional especializado em mentalidade, produtividade, saúde mental e bem-estar. "
+        "Escolha um tema atual e muito relevante aleatoriamente entre esses tópicos e escreva um post de blog completo e envolvente em português, em formato Markdown. "
+        "O texto deve ter título chamativo, subtítulos com emojis, listas, citação com >, e uma conclusão com chamada para salvar ou compartilhar. "
+        "Escreva de forma escaneável, emocional e inspiradora. "
+        "Adicione até 2 pequenos erros de português propositalmente para parecer mais humano."
     )
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "Você é um redator especialista em mentalidade, produtividade, saúde e bem-estar."},
-            {"role": "user", "content": prompt_usuario}
-        ]
-    )
+    print("⏳ Enviando requisição para OpenAI...")
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Você é um redator especialista em mentalidade, produtividade, saúde e bem-estar."},
+                {"role": "user", "content": prompt_usuario}
+            ],
+            timeout=15
+        )
+        print("✅ Resposta recebida!")
+    except Exception as e:
+        print(f"❌ Erro ao tentar gerar post com a OpenAI: {e}")
+        return
+
+    if not response.choices or not response.choices[0].message.content:
+        print("⚠️ Nenhum conteúdo retornado pela OpenAI. Verifique sua chave de API ou o modelo utilizado.")
+        return
 
     raw_content = response.choices[0].message.content
+    
+    print("\n📄 Conteúdo gerado pela IA:\n")
+    print(raw_content)
     print("🔍 Conteúdo retornado com sucesso. Gerando post...")
     linhas = raw_content.strip().split("\n")
     titulo_extraido = ""
@@ -88,3 +101,6 @@ def commit_e_push():
         print("🚀 Push realizado com sucesso!")
     except subprocess.CalledProcessError:
         print("❌ Erro ao tentar fazer commit ou push. Verifique o status do Git.")
+
+if __name__ == "__main__":
+    gerar_post()
