@@ -39,12 +39,22 @@ def gerar_novos_temas():
     )
 
     conteudo = response.choices[0].message.content.strip()
+    print(f"Conteúdo retornado: {conteudo}")
+
+    # Processar a resposta como JSON diretamente ou ajustar conforme o conteúdo
     try:
-        return json.loads(conteudo)
+        posts = json.loads(conteudo)  # Tentativa de interpretar como JSON
     except json.JSONDecodeError:
-        print("⚠️ Erro ao interpretar a resposta da OpenAI. Conteúdo bruto:")
-        print(conteudo)
-        return []
+        print("⚠️ Erro ao interpretar a resposta da OpenAI. Tentando formatar manualmente.")
+        posts = [
+            {
+                "titulo": "Título extraído",
+                "descricao": "Descrição extraída"
+            }
+            for tema in conteudo.split("\n")
+            if "titulo" in tema
+        ]
+    return posts
 
 posts = gerar_novos_temas()
 

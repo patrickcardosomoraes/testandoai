@@ -103,4 +103,4 @@ def commit_e_push():
         print("❌ Erro ao tentar fazer commit ou push. Verifique o status do Git.")
 
 if __name__ == "__main__":
-    gerar_post()
+    gerar_post("", "")
