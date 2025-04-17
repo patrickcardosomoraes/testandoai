@@ -65,4 +65,4 @@ def inserir_errinhos(texto):
 for post in posts:
     titulo = post["titulo"]
     descricao = inserir_errinhos(post["descricao"])
-    gerar_post(titulo, descricao, prompt_imagem="")
+    gerar_post(titulo, descricao)
