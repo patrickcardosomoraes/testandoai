@@ -16,6 +16,7 @@ export default function Blog({ posts, currentPage, totalPages }) {
       <Head>
         <title>Blog | TestandoAI</title>
         <meta name="description" content="Artigos sobre mentalidade, saúde mental, física e dicas para uma vida melhor." />
+        <link rel="icon" href="/favicon-testandoai.png" type="image/png" />
       </Head>
 
       <Layout>

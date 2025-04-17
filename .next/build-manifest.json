@@ -12,6 +12,11 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -27,20 +32,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/blog.js"
     ],
-    "/blog/[slug]": [
+    "/politica-de-privacidade": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/blog/[slug].js"
+      "static/chunks/pages/politica-de-privacidade.js"
     ],
-    "/blog/page/[page]": [
+    "/teste/mbti": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/blog/page/[page].js"
-    ],
-    "/blog/tag/[tag]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/blog/tag/[tag].js"
+      "static/chunks/pages/teste/mbti.js"
     ]
   },
   "ampFirstPages": []
