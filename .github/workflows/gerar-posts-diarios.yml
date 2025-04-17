@@ -25,12 +25,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-full.txt
 
-      - name: 🧠 Instalar schedule e rodar script
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          python -m pip install schedule
-          python scripts/postar_em_lote.py
+          - name: 🧠 Instalar schedule e rodar script
+          env:
+            OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          run: |
+            python -m pip install schedule
+            echo "📦 Verificando pacotes instalados:"
+            pip list
+            echo "🚀 Executando script:"
+            python scripts/postar_em_lote.py
 
       - name: 📤 Commit e Push dos novos posts
         env:
