@@ -1,9 +1,11 @@
 name: Gerar Posts Diários
 
 on:
+  schedule:
+    - cron: '0 12 * * *'   # 09:00 no Brasil (UTC-3)
+    - cron: '0 15 * * *'   # 12:00 no Brasil (UTC-3)
+    - cron: '0 21 * * *'   # 18:00 no Brasil (UTC-3)
   workflow_dispatch:
-  repository_dispatch:
-    types: [postagem-automatica]
 
 jobs:
   gerar-posts:
@@ -18,23 +20,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 🔄 Limpar cache anterior (forçar ambiente limpo)
-        run: rm -rf ~/.cache/pip
-
       - name: 📦 Instalar dependências e rodar script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          echo "🔧 Atualizando pip"
+          echo "⬆️ Atualizando pip"
           python -m pip install --upgrade pip
 
           echo "📦 Instalando pacotes do requirements"
-          pip install -r requirements.txt
+          pip install -r requirements-full.txt || pip install schedule
 
           echo "🔍 Verificando pacotes instalados"
           pip list
 
-          echo "🚀 Rodando script"  
+          echo "🚀 Rodando script"
           python scripts/postar_em_lote.py
 
       - name: 📤 Commit e push dos novos posts
@@ -44,10 +43,8 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git remote set-url origin https://x-access-token:${GH_PAT}@github.com/patrickcardosomoraes/testandoai.git
-          # git pull --rebase origin main || echo "Sem mudanças remotas"
+          git pull --rebase origin main || echo "Sem mudanças remotas"
           git add content/posts/
-          echo "📁 Arquivos adicionados:"
-          git status
           git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
           git push origin main
 
