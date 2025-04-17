@@ -11,6 +11,7 @@ export default function FormularioEmail({ tag = '' }) {
     e.preventDefault();
     setLoading(true);
     setMessage('');
+    console.log('TAG ENVIADA:', tag);
 
     try {
       const res = await fetch('/api/save-email', {

@@ -99,7 +99,7 @@ const BlogPost = ({ frontmatter, content }) => {
             </div>
           </div>
 
-          <FormularioEmail />
+          <FormularioEmail tag="post-detalhado" />
 
           <div className="mt-12">
             <Link href="/blog" className="text-sm underline text-[#2F6BB0] hover:text-[#1d4c8c]">

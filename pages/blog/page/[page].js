@@ -62,8 +62,8 @@ export default function BlogPage({ posts, currentPage, totalPages }) {
             ))}
           </div>
 
-                    {/* FORMULÁRIO DE CAPTURA */}
-                    <FormularioEmail tag="blog-list" />
+          {/* FORMULÁRIO DE CAPTURA INTEGRADO COM O SUPABASE (origem: blog-list) */}
+          <FormularioEmail tag="blog-list" />
         </div>
       </Layout>
     </>

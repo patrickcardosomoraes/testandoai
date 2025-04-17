@@ -13,13 +13,15 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('📨 Requisição recebida:', { email, origem });
     const { data: existing, error: fetchError } = await supabase
       .from('cadastro_testandoai')
       .select('id')
       .eq('email', email)
-      .single();
+      .maybeSingle();
 
-    if (fetchError && fetchError.code !== 'PGRST116') {
+    console.log('🔍 Resultado da verificação:', { existing, fetchError });
+    if (fetchError) {
       console.error('Erro ao verificar e-mail:', fetchError.message);
       return res.status(500).json({ error: 'Erro ao verificar e-mail' });
     }
