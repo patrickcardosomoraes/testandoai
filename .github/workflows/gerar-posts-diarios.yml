@@ -24,11 +24,11 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          echo "🔧 Atualizando pip"
+          echo "⬆️ Atualizando pip"
           python -m pip install --upgrade pip
 
           echo "📦 Instalando pacotes do requirements"
-          pip install -r requirements-full.txt
+          pip install -r requirements-full.txt || pip install schedule
 
           echo "🔍 Verificando pacotes instalados"
           pip list
