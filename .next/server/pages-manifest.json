@@ -1,1 +1,15 @@
-{}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/api/save-email": "pages/api/save-email.js",
+  "/": "pages/index.html",
+  "/politica-de-cookies": "pages/politica-de-cookies.html",
+  "/politica-de-privacidade": "pages/politica-de-privacidade.html",
+  "/termos-de-uso": "pages/termos-de-uso.html",
+  "/blog": "pages/blog.js",
+  "/_document": "pages/_document.js",
+  "/blog/page/[page]": "pages/blog/page/[page].js",
+  "/teste/mbti": "pages/teste/mbti.html",
+  "/blog/[slug]": "pages/blog/[slug].js",
+  "/404": "pages/404.html"
+}
