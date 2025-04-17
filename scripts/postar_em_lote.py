@@ -14,7 +14,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 sys.path.append(os.path.dirname(__file__))
 
 # 🧠 Importa a função principal de geração
-from gerar_post import gerar_post
+from gerar_post import gerar_post  # Certifique-se que a função gerar_post está definida para aceitar 'titulo' e 'descricao' como parâmetros
 
 def gerar_novos_temas():
     response = client.chat.completions.create(
