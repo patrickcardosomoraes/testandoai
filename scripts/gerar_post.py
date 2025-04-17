@@ -37,8 +37,7 @@ def gerar_post(titulo, descricao):
     )
 
     raw_content = response.choices[0].message.content
-    print("🔍 Conteúdo retornado:", raw_content)
-
+    print("🔍 Conteúdo retornado com sucesso. Gerando post...")
     texto = raw_content
     slug = slugify(titulo)
     data = datetime.now().strftime("%Y-%m-%d")
