@@ -18,7 +18,7 @@ def slugify(text):
 load_dotenv(dotenv_path=Path(".env"))
 
 # Função de geração de post
-def gerar_post():
+def gerar_post(titulo, descricao):
     print("🚀 Iniciando geração de post...")
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -27,7 +27,7 @@ def gerar_post():
     print("✅ API key carregada com sucesso (oculta por segurança).")
 
     client = OpenAI(api_key=api_key)
-    prompt_usuario = "Gere um post de blog com SEO e Markdown sobre algum tema atual de mentalidade, produtividade, alta performance ou bem-estar. Retorne apenas o conteúdo final."
+    prompt_usuario = f"Gere um post de blog com SEO e Markdown com base no seguinte título e descrição:\nTítulo: {titulo}\nDescrição: {descricao}"
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -39,17 +39,7 @@ def gerar_post():
     raw_content = response.choices[0].message.content
     print("🔍 Conteúdo retornado:", raw_content)
 
-    try:
-        import json
-        parsed = json.loads(raw_content)
-        titulo = parsed[0]["titulo"]
-        descricao = parsed[0]["descricao"]
-        texto = f"# {titulo}\n\n{descricao}"
-    except Exception as e:
-        print("⚠️ Falha ao interpretar JSON. Usando texto bruto.")
-        titulo = "Post sem título"
-        descricao = "Descrição padrão para fallback"
-        texto = raw_content
+    texto = raw_content
     slug = slugify(titulo)
     data = datetime.now().strftime("%Y-%m-%d")
     caminho = Path("content/posts")
