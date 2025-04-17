@@ -29,7 +29,7 @@ export default function Blog({ posts, currentPage, totalPages }) {
             {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
                 <article>
-                  {frontmatter.image && (
+                  {frontmatter.image ? (
                     <div className="mb-4 rounded overflow-hidden">
                       <Image
                         src={frontmatter.image}
@@ -38,6 +38,10 @@ export default function Blog({ posts, currentPage, totalPages }) {
                         height={250}
                         className="rounded-xl object-cover"
                       />
+                    </div>
+                  ) : (
+                    <div className="mb-4 h-[250px] w-full bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm italic">
+                      Imagem não disponível
                     </div>
                   )}
                   <p className="text-xs font-semibold text-[#2CB49D] mb-1 uppercase">{frontmatter.tags?.[0]}</p>

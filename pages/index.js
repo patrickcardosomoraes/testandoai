@@ -3,10 +3,14 @@ import Layout from '@/components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
 import FormularioEmail from '@/components/FormularioEmail';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <Layout>
+      <Head>
+        <meta name="google-site-verification" content="G2248zuyTrDIKZlW2DUMIKSU_QNlL_5Gqu6Vis_wwUk" />
+      </Head>
       <div className="pt-6 pb-8 px-4 flex flex-col items-center gap-6">
         <h1 className="text-lg md:text-xl font-bold text-center text-[#2F6BB0] leading-snug">
           Testes de Personalidade com Embasamento Psicológico

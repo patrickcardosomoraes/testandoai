@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git remote set-url origin https://x-access-token:${GH_PAT}@github.com/patrickcardosomoraes/testandoai.git
           git pull --rebase origin main || echo "Sem mudanças remotas"
-          git add .
+          git add content/posts/
           git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
           git push origin main
 
