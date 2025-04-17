@@ -34,7 +34,7 @@ jobs:
           echo "🔍 Verificando pacotes instalados"
           pip list
 
-          echo "🚀 Rodando script"
+          echo "🚀 Rodando script"  
           python scripts/postar_em_lote.py
 
       - name: 📤 Commit e push dos novos posts
