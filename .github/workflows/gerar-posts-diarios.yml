@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
 
           echo "📦 Instalando pacotes do requirements"
-          pip install -r requirements.txt
+          pip install -r requirements-full.txt
 
           echo "🔍 Verificando pacotes instalados"
           pip list

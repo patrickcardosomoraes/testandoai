@@ -3,4 +3,3 @@ requests
 pillow
 unidecode
 python-dotenv
-schedule

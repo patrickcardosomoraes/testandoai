@@ -7,7 +7,6 @@ from openai import OpenAI
 from datetime import datetime
 import unidecode
 import re
-import schedule
 import time
 
 # Função auxiliar para gerar slug
@@ -84,25 +83,3 @@ def commit_e_push():
         print("🚀 Push realizado com sucesso!")
     except subprocess.CalledProcessError:
         print("❌ Erro ao tentar fazer commit ou push. Verifique o status do Git.")
-
-if __name__ == "__main__":
-    import schedule
-    import time
-
-    def tarefa_diaria():
-        if os.getenv("OPENAI_API_KEY"):
-            gerar_post()
-            commit_e_push()
-        else:
-            print("⚠️ Execução cancelada: API key ausente no ambiente.")
-
-    # Agendamento 3x ao dia (06:00, 12:00 e 18:00)
-    schedule.every().day.at("06:00").do(tarefa_diaria)
-    schedule.every().day.at("12:00").do(tarefa_diaria)
-    schedule.every().day.at("18:00").do(tarefa_diaria)
-
-    print("🕒 Aguardando horários agendados para gerar posts automaticamente...")
-
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
