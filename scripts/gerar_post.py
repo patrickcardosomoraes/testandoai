@@ -18,7 +18,7 @@ def slugify(text):
 load_dotenv(dotenv_path=Path(".env"))
 
 # Função de geração de post
-def gerar_post():
+def gerar_post(titulo, descricao):
     print("🚀 Iniciando geração de post...")
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
