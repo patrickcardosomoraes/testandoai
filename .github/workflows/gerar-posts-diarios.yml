@@ -46,6 +46,8 @@ jobs:
           git remote set-url origin https://x-access-token:${GH_PAT}@github.com/patrickcardosomoraes/testandoai.git
           # git pull --rebase origin main || echo "Sem mudanças remotas"
           git add content/posts/
+          echo "📁 Arquivos adicionados:"
+          git status
           git diff --cached --quiet || git commit -m "✨ Novo post automático com imagem gerada por IA"
           git push origin main
 
