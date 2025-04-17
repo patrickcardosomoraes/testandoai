@@ -24,12 +24,24 @@ export default function Blog({ posts, currentPage, totalPages }) {
             <h1 className="text-3xl font-bold">Nosso Blog</h1>
             <p className="text-gray-600 mt-2">Descubra conteúdos valiosos sobre mente, corpo e bem-estar.</p>
           </header>
-
+          {/* FILTRO DE CATEGORIAS */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {['Todos', ...new Set(posts.flatMap(p => p.frontmatter.tags || []))].map((tag) => (
+              <Link
+                key={tag}
+                href={tag === 'Todos' ? '/blog' : `/blog/tag/${tag.toLowerCase()}`}
+                className="px-4 py-2 rounded-full border text-sm transition font-medium bg-white border-[#2CB49D] text-[#2CB49D] hover:bg-[#2CB49D]/10 hover:text-[#2CB49D]"
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
+ 
           <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
                 <article>
-                  {frontmatter.image ? (
+                  {frontmatter.image && (
                     <div className="mb-4 rounded overflow-hidden">
                       <Image
                         src={frontmatter.image}
@@ -38,10 +50,6 @@ export default function Blog({ posts, currentPage, totalPages }) {
                         height={250}
                         className="rounded-xl object-cover"
                       />
-                    </div>
-                  ) : (
-                    <div className="mb-4 h-[250px] w-full bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm italic">
-                      Imagem não disponível
                     </div>
                   )}
                   <p className="text-xs font-semibold text-[#2CB49D] mb-1 uppercase">{frontmatter.tags?.[0]}</p>
@@ -130,7 +138,7 @@ export async function getStaticProps() {
     const markdownWithMeta = fs.readFileSync(path.join('content', 'posts', filename), 'utf-8');
     const { data: frontmatter } = matter(markdownWithMeta);
     return { slug, frontmatter };
-  });
+  }).sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 
   const currentPage = 1;
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);

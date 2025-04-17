@@ -26,6 +26,18 @@ export default function BlogPage({ posts, currentPage, totalPages }) {
             <p className="text-gray-600 mt-2">Explore ideias sobre mente, produtividade e alta performance.</p>
           </header>
 
+          {/* FILTRO DE CATEGORIAS */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {['Todos', ...new Set(posts.flatMap(p => p.frontmatter.tags || []))].map((tag) => (
+              <Link
+                key={tag}
+                href={tag === 'Todos' ? '/blog' : `/blog/tag/${tag.toLowerCase()}`}
+                className="px-4 py-2 rounded-full border text-sm transition font-medium bg-white border-[#2CB49D] text-[#2CB49D] hover:bg-[#2CB49D]/10 hover:text-[#2CB49D]"
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
           <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {posts.map(({ slug, frontmatter }) => (
               <Link key={slug} href={`/blog/${slug}`} className="bg-white rounded-xl shadow hover:shadow-lg transition p-5">
