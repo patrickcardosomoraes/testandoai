@@ -40,7 +40,7 @@ def gerar_post(titulo, descricao):
     print("🔍 Conteúdo retornado com sucesso. Gerando post...")
     texto = raw_content
     slug = slugify(titulo)
-    data = datetime.now().strftime("%Y-%m-%d")
+    data = datetime.now().strftime("%Y-%m-%d-%H%M")
     caminho = Path("content/posts")
     caminho.mkdir(parents=True, exist_ok=True)
     imagem_path = f"public/images/{slug}.webp"
@@ -60,6 +60,7 @@ tags: ["psicologia", "autossabotagem", "comportamento"]
 
 {texto}
 """)
+    print(f"📂 Verificando se o arquivo existe: {arquivo.exists()} → {arquivo.resolve()}")
 
     print(f"📝 Post gerado com sucesso: {arquivo}")
 
