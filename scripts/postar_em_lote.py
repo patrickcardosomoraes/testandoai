@@ -18,7 +18,7 @@ from gerar_post import gerar_post
 
 def gerar_novos_temas():
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[
             {
                 "role": "system",
