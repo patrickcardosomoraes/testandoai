@@ -12,33 +12,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 💠 Configurar o repositório
+      - name: 💠 Checkout do repositório
         uses: actions/checkout@v3
 
-      - name: 🐍 Instalar Python
+      - name: 🐍 Instalar Python 3.11
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: 📦 Instalar dependências
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements-full.txt
-
-      - name: 🧠 Instalar schedule e rodar script
+      - name: 📦 Instalar dependências e rodar script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          echo "📦 Instalando 'schedule'..."
-          python -m pip install schedule
+          echo "🔧 Atualizando pip"
+          python -m pip install --upgrade pip
 
-          echo "🔍 Verificando pacotes disponíveis com pip list:"
+          echo "📦 Instalando pacotes do requirements"
+          pip install -r requirements-full.txt
+
+          echo "🔍 Verificando pacotes instalados"
           pip list
 
-          echo "🚀 Executando script..."
+          echo "🚀 Rodando script"
           python scripts/postar_em_lote.py
 
-      - name: 📤 Commit e Push dos novos posts
+      - name: 📤 Commit e push dos novos posts
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
