@@ -1,11 +1,9 @@
 name: Gerar Posts Diários
 
 on:
-  schedule:
-    - cron: '0 12 * * *'   # 09:00 no Brasil (UTC-3)
-    - cron: '0 15 * * *'   # 12:00 no Brasil (UTC-3)
-    - cron: '0 21 * * *'   # 18:00 no Brasil (UTC-3)
   workflow_dispatch:
+  repository_dispatch:
+    types: [postagem-automatica]
 
 jobs:
   gerar-posts:
@@ -19,6 +17,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
+      - name: 🔄 Limpar cache anterior (forçar ambiente limpo)
+        run: rm -rf ~/.cache/pip
 
       - name: 📦 Instalar dependências e rodar script
         env:
