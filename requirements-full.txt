@@ -1,6 +1,6 @@
 openai>=1.0.0
-schedule
 requests
 pillow
 unidecode
 python-dotenv
+schedule
