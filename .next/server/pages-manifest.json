@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/api/save-email": "pages/api/save-email.js",
-  "/blog/[slug]": "pages/blog/[slug].js",
-  "/blog": "pages/blog.js"
+  "/blog": "pages/blog.js",
+  "/blog/[slug]": "pages/blog/[slug].js"
 }

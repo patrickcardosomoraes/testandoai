@@ -12,6 +12,7 @@ import React from 'react';
 
 const BlogPost = ({ frontmatter, content }) => {
   const router = useRouter();
+  const { slug } = router.query;
   const currentUrl = `https://testandoai.com.br${router.asPath}`;
 
   const processedContent = content.trim();
@@ -99,7 +100,7 @@ const BlogPost = ({ frontmatter, content }) => {
             </div>
           </div>
 
-          <FormularioEmail tag="post-detalhado" />
+          <FormularioEmail tag={`post: ${frontmatter.title}`} />
 
           <div className="mt-12">
             <Link href="/blog" className="text-sm underline text-[#2F6BB0] hover:text-[#1d4c8c]">
