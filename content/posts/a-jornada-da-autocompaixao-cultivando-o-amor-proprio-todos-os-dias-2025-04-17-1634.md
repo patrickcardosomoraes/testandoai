@@ -3,7 +3,7 @@ title: "A Jornada da Autocompaixão: 🌱 Cultivando o Amor Próprio Todos os Di
 excerpt: "**Introdução**"
 date: "2025-04-17-1634"
 slug: "a-jornada-da-autocompaixao-cultivando-o-amor-proprio-todos-os-dias"
-image: ""
+image: "/images/a-jornada-da-autocompaixao-cultivando-o-amor-proprio-todos-os-dias.jpeg"
 tags: ["psicologia", "autossabotagem", "comportamento"]
 ---
 
