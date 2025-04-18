@@ -32,13 +32,15 @@ export default function Home() {
             </div>
           </Link>
 
-          <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
-            <Image src="/cards/temperamentos.png" alt="Temperamentos" width={260} height={180} className="object-cover" />
-            <div className="p-3 text-center">
-              <h2 className="text-base font-bold mb-1 text-gray-800">Temperamentos</h2>
-              <p className="text-sm text-gray-500">Em breve – Teoria dos quatro temperamentos aplicada</p>
+          <Link href="/teste/temperamentos" className="hover:scale-105 transition-transform duration-200">
+            <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
+              <Image src="/cards/temperamentos.png" alt="Temperamentos" width={260} height={180} className="object-cover" />
+              <div className="p-3 text-center">
+                <h2 className="text-base font-bold mb-1 text-[#2F6BB0]">Temperamentos</h2>
+                <p className="text-sm text-gray-600">Descubra seu temperamento dominante entre os 4 tipos clássicos</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div className="w-[260px] h-[340px] bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center justify-between">
             <Image src="/cards/linguagens.png" alt="Linguagens do Amor" width={260} height={180} className="object-cover" />

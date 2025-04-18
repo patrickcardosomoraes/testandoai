@@ -50,7 +50,7 @@ export default function TesteMBTI() {
     if (!result) {
       return (
         <Layout>
-          <div className="min-h-screen flex items-center justify-center text-center px-4 py-20 text-red-600">
+          <div className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-6 md:py-4 text-[#2F6BB0]">
             <h1 className="text-2xl font-bold">Tipo de personalidade não encontrado.</h1>
           </div>
         </Layout>
@@ -73,10 +73,41 @@ export default function TesteMBTI() {
 
     return (
       <Layout>
-        <div className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-8 text-[#2F6BB0]">
+        <div className="min-h-screen bg-gradient-to-b from-[#f8fbff] to-[#f0f4ff] flex flex-col items-center justify-center text-center px-4 py-6 md:py-4 text-[#2F6BB0]">
           <h1 className="text-3xl font-bold mb-2">Você é {result.title}</h1>
           <p className="text-gray-700 max-w-xl mb-4 text-sm md:text-base">{result.description}</p>
-          <Image src={result.image} alt={`Ilustração do tipo ${result.title}`} width={240} height={240} className="mb-4" />
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-4xl mb-6">
+            <div className="flex-1 space-y-3">
+              {[
+                ['Extroversão (E)', 'Introversão (I)'],
+                ['Sensação (S)', 'Intuição (N)'],
+                ['Pensamento (T)', 'Sentimento (F)'],
+                ['Julgamento (J)', 'Percepção (P)'],
+              ].map(([positiveLabel, negativeLabel]) => {
+                const posKey = positiveLabel.match(/\((.*?)\)/)[1];
+                const negKey = negativeLabel.match(/\((.*?)\)/)[1];
+                const total = scores[posKey] + scores[negKey];
+                const percent = total === 0 ? 0 : Math.round((scores[posKey] / total) * 100);
+                return (
+                  <div key={posKey} className="mb-2">
+                    <div className="flex justify-between text-xs font-medium mb-1">
+                      <span>{positiveLabel}</span>
+                      <span>{negativeLabel}</span>
+                    </div>
+                    <div className="w-full h-2 bg-gray-200 rounded-full">
+                      <div
+                        className="h-full bg-[#2F6BB0] rounded-full"
+                        style={{ width: `${percent}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <Image src={result.image} alt={`Ilustração do tipo ${result.title}`} width={240} height={240} className="mt-4 md:mt-0" />
+          </div>
 
           <div className="mt-4 w-full max-w-xl">
             <div className="flex justify-center gap-2 mb-3 flex-wrap">
@@ -127,11 +158,10 @@ export default function TesteMBTI() {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-start text-center px-4 py-6 text-[#2F6BB0]">
-        <Image src="/logo_testandoai.png" alt="Logo TestandoAI" width={240} height={240} className="mb-2" />
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 py-4 text-[#2F6BB0]">
         <p className="text-xs text-gray-500 mb-4 italic">Seja você mesmo. Cada resposta é um passo rumo ao autoconhecimento.</p>
 
-        <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+        <div className="w-full max-w-xl h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
           <div
             className="h-full bg-[#2F6BB0] transition-all duration-300"
             style={{ width: `${(step / questions.length) * 100}%` }}
@@ -171,7 +201,7 @@ export default function TesteMBTI() {
                   <button
                     key={val}
                     onClick={() => handleAnswer(val)}
-                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full transition-all duration-200 ${colorMap[val]}`}
+                    className={`w-7 h-7 md:w-8 md:h-8 rounded-full transition-all duration-200 ${colorMap[val]}`}
                     aria-label={val < 0 ? `Discordo nível ${Math.abs(val)}` : val > 0 ? `Concordo nível ${val}` : 'Neutro'}
                   />
                 );
