@@ -25,7 +25,7 @@ export default function Header() {
             src="/logo_testandoai.png"
             alt="Logo TestandoAI"
             width={180}
-            height={80}
+            height={85}
             className="h-[70px] w-auto cursor-pointer"
             priority
           />

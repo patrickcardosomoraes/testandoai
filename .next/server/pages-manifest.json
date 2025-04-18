@@ -4,5 +4,5 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/teste/temperamentos": "pages/teste/temperamentos.js",
-  "/teste/mbti": "pages/teste/mbti.js"
+  "/blog": "pages/blog.js"
 }
