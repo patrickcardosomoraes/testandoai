@@ -3,7 +3,7 @@ title: "Como a autocompaixão pode impulsionar sua produtividade"
 excerpt: "Descubra o poder da autocompaixão para superar obstáculos, aumentar a motivação e alcançar alta performance de forma saudável e sustentável."
 date: "2025-04-17"
 slug: "como-a-autocompaixao-pode-impulsionar-sua-produtividade"
-image: ""
+image: "/images/como-a-autocompaixao-pode-impulsionar-sua-produtividade.jpeg"
 tags: ["psicologia", "autossabotagem", "comportamento"]
 ---
 
