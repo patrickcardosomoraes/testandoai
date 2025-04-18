@@ -3,7 +3,7 @@ title: "Mentalidade de crescimento: o segredo dos altamente produtivos"
 excerpt: "Entenda como adotar uma mentalidade de crescimento pode transformar sua abordagem em relação aos desafios, promovendo uma maior produtividade e realização pessoal."
 date: "2025-04-17"
 slug: "mentalidade-de-crescimento-o-segredo-dos-altamente-produtivos"
-image: ""
+image: "/images/mentalidade-de-crescimento-o-segredo-dos-altamente-produtivos.jpeg"
 tags: ["psicologia", "autossabotagem", "comportamento"]
 ---
 
