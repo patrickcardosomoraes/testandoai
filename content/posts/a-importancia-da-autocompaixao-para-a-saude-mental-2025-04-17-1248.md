@@ -3,7 +3,7 @@ title: "🧠 **A Importância da Autocompaixão para a Saúde Mental**"
 excerpt: "No mundo agitado em que vivemos, muitas vezes esquecemos de dedicar um tempo para cuidar de nós mesmos. A pressão por al"
 date: "2025-04-17-1248"
 slug: "a-importancia-da-autocompaixao-para-a-saude-mental"
-image: ""
+image: "/images/a-importancia-da-autocompaixao-para-a-saude-mental.jpeg"
 tags: ["psicologia", "autossabotagem", "comportamento"]
 ---
 
