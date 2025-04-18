@@ -3,7 +3,7 @@ title: "5 estratégias psicológicas para manter uma mentalidade positiva"
 excerpt: "Conheça técnicas comprovadas de psicologia positiva que podem ajudar você a cultivar uma mentalidade positiva, enfrentar adversidades e alcançar níveis mas altos de alta performance."
 date: "2025-04-17"
 slug: "5-estrategias-psicologicas-para-manter-uma-mentalidade-positiva"
-image: "/images/5-estrategias-psicologicas-para-manter-uma-mentalidade-positiva"
+image: "/images/5-estrategias-psicologicas-para-manter-uma-mentalidade-positiva.jpeg"
 tags: ["psicologia", "autossabotagem", "comportamento"]
 ---
 
